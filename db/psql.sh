@@ -1,3 +1,3 @@
 #!/bin/sh
 
-psql -h localhost -U p -d p
+psql -h localhost -U liltalk -d liltalk

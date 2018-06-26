@@ -2,16 +2,16 @@
 
 if [ "$1" = "travis" ]
 then
-    psql -U postgres -c "CREATE DATABASE p_test;"
-    psql -U postgres -c "CREATE USER p PASSWORD 'p' SUPERUSER;"
+    psql -U postgres -c "CREATE DATABASE liltalk_test;"
+    psql -U postgres -c "CREATE USER liltalk  PASSWORD 'liltalk' SUPERUSER;"
 else
-    [ "$1" != "test" ] && sudo -u postgres dropdb --if-exists p
-    [ "$1" != "test" ] && sudo -u postgres dropdb --if-exists p_test
-    [ "$1" != "test" ] && sudo -u postgres dropuser --if-exists p
-    sudo -u postgres psql -c "CREATE USER p PASSWORD 'p' SUPERUSER;"
-    [ "$1" != "test" ] && sudo -u postgres createdb -O p p
-    sudo -u postgres createdb -O p p_test
-    LINE="localhost:5432:*:p:p"
+    [ "$1" != "test" ] && sudo -u postgres dropdb --if-exists liltalk
+    [ "$1" != "test" ] && sudo -u postgres dropdb --if-exists liltalk_test
+    [ "$1" != "test" ] && sudo -u postgres dropuser --if-exists liltalk
+    sudo -u postgres psql -c "CREATE USER liltalk PASSWORD 'liltalk' SUPERUSER;"
+    [ "$1" != "test" ] && sudo -u postgres createdb -O liltalk liltalk
+    sudo -u postgres createdb -O liltalk liltalk_test
+    LINE="localhost:5432:*:liltalk:liltalk"
     FILE=~/.pgpass
     if [ ! -f $FILE ]
     then
