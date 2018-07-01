@@ -32,30 +32,42 @@ AppAsset::register($this);
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-fixed-top',
+            'class' => 'navbar-default navbar-fixed-top',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-left'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->nombre . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
+    $item = [
+        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Contact', 'url' => ['/site/contact']],
+   ];
+   
+   if (Yii::$app->user->isGuest) {
+       $item[] = ['label' => 'Iniciar sesión' , 'url' => ['/site/login']];
+   }  else {
+       $item[] = [
+          'label' => 'Usuarios (' . Yii::$app->user->identity->nombre . ')',
+          'items' => [
+              ['label' => 'Mi perfil', 'url' => ['usuarios/view', 'id' => Yii::$app->user->identity->id]],
+              '<li class="divider"></li>',
+              [
+                  'label' => 'Logout',
+                  'url' => ['site/logout'],
+                  'linkOptions' => ['data-method' => 'POST'],
+              ],
+              '<li class="divider"></li>',
+              [
+                  'label' => 'Darse de baja',
+                  'url' => ['usuarios/delete'],
+                  'linkOptions' => ['data-method' => 'POST'],
+              ],
+          ]
+      ];
+   }
+   echo Nav::widget([
+       'options' => ['class' => 'navbar-nav navbar-right'],
+       'items' =>$item ,
+   ]);
+   NavBar::end();
     ?>
 
     <div class="container">

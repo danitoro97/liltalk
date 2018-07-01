@@ -103,6 +103,9 @@ a.desc:after {
         width: 100%;
         padding: 10px 15px;
     }
+    #w1 > li:last-child {
+        float: left !important;
+    }
 }
 /*
 .nav > li > form > button.logout:focus,
@@ -116,20 +119,41 @@ a.desc:after {
 */
 #w0 {
     background-color: #eaeff2;
+    width: 100%;
+}
+.navbar-header {
+    padding-right: 10px;
+    margin-bottom: 10px;
 }
 
 #w1 {
+    margin-top: 5px;
     background-color: #c9d8e2;
     border-radius: 10px;
-    margin-left: 15%;
+    width: 90%;
+}
+
+#w1 > li:last-child {
+    float: right;
 }
 
 .navbar-header a {
-    color:grey !important;
+    color:grey ;
+    font-size: 2em;
 }
 
 .navbar-nav a {
-    color:grey !important;
+    color:grey ;
+    margin-left: 10px;
+}
+
+.navbar-nav .active a, .navbar-nav a:hover, .navbar-nav a:focus{
+    background-color: #4B4C4C !important;
+    color: white !important;
+}
+
+.navbar-nav a {
+    border-radius: 100px;
 }
 
 /*
