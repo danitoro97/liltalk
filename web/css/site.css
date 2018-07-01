@@ -104,7 +104,7 @@ a.desc:after {
         padding: 10px 15px;
     }
 }
-
+/*
 .nav > li > form > button.logout:focus,
 .nav > li > form > button.logout:hover {
     text-decoration: none;
@@ -113,3 +113,28 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+*/
+#w0 {
+    background-color: #eaeff2;
+}
+
+#w1 {
+    background-color: #c9d8e2;
+    border-radius: 10px;
+    margin-left: 15%;
+}
+
+.navbar-header a {
+    color:grey !important;
+}
+
+.navbar-nav a {
+    color:grey !important;
+}
+
+/*
+
+#c9d8e2 fondo
+#e5fbff letra
+#eaeff2 fondo interior
+ */
