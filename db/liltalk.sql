@@ -12,7 +12,8 @@ CREATE TABLE usuarios
     password varchar(255) not null,
     email varchar(255) not null unique,
     auth_key varchar(255) unique,
-    token_val varchar(255) unique
+    token_val varchar(255) unique,
+    biografia text
 );
 
 INSERT INTO usuarios (nombre,password,email)

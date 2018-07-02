@@ -103,7 +103,7 @@ a.desc:after {
         width: 100%;
         padding: 10px 15px;
     }
-    #w1 > li:last-child {
+    nav ul > li:last-child {
         float: left !important;
     }
 }
@@ -117,23 +117,27 @@ a.desc:after {
     outline: none;
 }
 */
-#w0 {
+nav {
     background-color: #eaeff2;
     width: 100%;
 }
+
 .navbar-header {
     padding-right: 10px;
     margin-bottom: 10px;
 }
 
-#w1 {
-    margin-top: 5px;
+nav ul {
     background-color: #c9d8e2;
     border-radius: 10px;
     width: 90%;
 }
 
-#w1 > li:last-child {
+nav .container div:last-child {
+    margin-top: 5px;
+}
+
+nav > .container > div:last-child > ul > li:last-child {
     float: right;
 }
 

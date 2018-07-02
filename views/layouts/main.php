@@ -40,14 +40,16 @@ AppAsset::register($this);
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
    ];
-   
+
    if (Yii::$app->user->isGuest) {
        $item[] = ['label' => 'Iniciar sesión' , 'url' => ['/site/login']];
    }  else {
        $item[] = [
           'label' => 'Usuarios (' . Yii::$app->user->identity->nombre . ')',
           'items' => [
-              ['label' => 'Mi perfil', 'url' => ['usuarios/view', 'id' => Yii::$app->user->identity->id]],
+              ['label' => 'Mi perfil', 'url' => ['usuario/view', 'id' => Yii::$app->user->identity->id]],
+              '<li class="divider"></li>',
+              ['label' => 'Modificar perfil', 'url' => ['usuario/update']],
               '<li class="divider"></li>',
               [
                   'label' => 'Logout',
