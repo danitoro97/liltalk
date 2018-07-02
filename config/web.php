@@ -5,6 +5,11 @@ $db = require __DIR__ . '/db.php';
 $log = require __DIR__ . '/log.php';
 
 $config = [
+    'on beforeAction' => function($event) {
+        if (isset($_COOKIE['language'])) {
+            \Yii::$app->language = $_COOKIE['language'];
+        }
+    },
     'id' => 'basic',
     'name' => 'LilTalk',
     'basePath' => dirname(__DIR__),
@@ -13,7 +18,8 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    
+    'sourceLanguage' => 'en-EN',
+    'language' => '',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

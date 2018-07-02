@@ -160,6 +160,10 @@ nav > .container > div:last-child > ul > li:last-child {
     border-radius: 100px;
 }
 
+.selected {
+    border: 2px solid black;
+}
+
 /*
 
 #c9d8e2 fondo

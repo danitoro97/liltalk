@@ -16,6 +16,12 @@ return [
     'Password Repeat' => 'Repetir contraseña',
     'Email' => 'Direccion de correo electronico',
     'Biography' => 'Biografía',
-    'About' => 'Sobre'
+    'About' => 'Sobre',
+    'Login' => 'Iniciar sesión',
+    'Users' => 'Usuarios',
+    'My profile' => 'Mi perfil',
+    'Update profile' => 'Modificar perfil',
+    'Logout' => 'Desconectar',
+    'Delete account' => 'Eliminar cuenta'
 
 ];
