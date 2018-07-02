@@ -6,6 +6,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Usuarios */
 /* @var $form yii\widgets\ActiveForm */
+//\Yii::$app->language = 'en-EN';
+
 ?>
 
 <div class="usuarios-form">

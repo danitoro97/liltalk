@@ -10,7 +10,13 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+if (isset($_COOKIE['language'])) {
+    \Yii::$app->params['language'] = $_COOKIE['language'];
+}
+
+
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,6 +25,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -37,7 +44,7 @@ AppAsset::register($this);
     ]);
     $item = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
    ];
 

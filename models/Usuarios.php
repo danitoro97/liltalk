@@ -67,11 +67,12 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'nombre' => 'Nombre',
-            'password' => 'Password',
-            'email' => 'Email',
-            'auth_key' => 'Auth Key',
+            'id' => Yii::t('app', 'ID'),
+            'nombre' => Yii::t('app', 'Name'),
+            'password' => Yii::t('app', 'Password'),
+            'email' => Yii::t('app', 'Email'),
+            'password_repeat' => Yii::t('app', 'Password Repeat'),
+            'biografia' => Yii::t('app', 'Biography'),
         ];
     }
 

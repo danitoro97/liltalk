@@ -13,7 +13,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'language' => 'es-ES',
+    
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -47,9 +47,22 @@ $config = [
             ],
 
         ],
+        'i18n' => [
+           'translations' => [
+               'app*' => [
+                   'class' => 'yii\i18n\PhpMessageSource',
+                   'basePath' => '@app/messages',
+
+                   'fileMap' => [
+                       'app' => 'app.php',
+
+                   ],
+               ],
+           ],
+        ],
         'log' => $log,
         'db' => $db,
-        'formatter' => [
+        /*'formatter' => [
             'timeZone' => 'Europe/Madrid',
         ],
         /*
