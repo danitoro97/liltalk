@@ -40,28 +40,28 @@ AppAsset::register($this);
     ]);
     $item = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
+        ['label' => Yii::t('app', 'Sobre'), 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
    ];
 
    if (Yii::$app->user->isGuest) {
-       $item[] = ['label' => Yii::t('app', 'Login') , 'url' => ['/site/login']];
+       $item[] = ['label' => Yii::t('app', 'Iniciar sesión') , 'url' => ['/site/login']];
    }  else {
        $item[] = [
-          'label' => Yii::t('app', 'Users') . '(' . Yii::$app->user->identity->nombre . ')',
+          'label' => Yii::t('app', 'Usuarios') . '(' . Yii::$app->user->identity->nombre . ')',
           'items' => [
-              ['label' => Yii::t('app', 'My profile'), 'url' => ['usuario/view', 'id' => Yii::$app->user->identity->id]],
+              ['label' => Yii::t('app', 'Mi perfil'), 'url' => ['usuario/view', 'id' => Yii::$app->user->identity->id]],
               '<li class="divider"></li>',
-              ['label' => Yii::t('app', 'Update profile'), 'url' => ['usuario/update']],
+              ['label' => Yii::t('app', 'Modificar perfil'), 'url' => ['usuario/update']],
               '<li class="divider"></li>',
               [
-                  'label' => Yii::t('app', 'Logout'),
+                  'label' => Yii::t('app', 'Desconectar'),
                   'url' => ['site/logout'],
                   'linkOptions' => ['data-method' => 'POST'],
               ],
               '<li class="divider"></li>',
               [
-                  'label' => Yii::t('app', 'Delete account'),
+                  'label' => Yii::t('app', 'Borrar cuenta'),
                   'url' => ['usuarios/delete'],
                   'linkOptions' => ['data-method' => 'POST'],
               ],
@@ -90,7 +90,7 @@ AppAsset::register($this);
 
         <p class="pull-right"><?= Yii::powered() ?></p>
         <a href="#"><span class="flag-icon flag-icon-es<?=(Yii::$app->language == 'es-ES' ? ' selected' : null)?>" data-value='es-ES'></span></a>
-        <a href="#"><span class="flag-icon flag-icon-us<?=(Yii::$app->language == 'es-ES' ? null : ' selected')?>" data-value='en-US'></span></a>
+        <a href="#"><span class="flag-icon flag-icon-us<?=(Yii::$app->language == 'en-US' ? ' selected' : null)?>" data-value='en-US'></span></a>
 
     </div>
 </footer>

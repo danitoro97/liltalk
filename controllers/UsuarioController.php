@@ -70,14 +70,14 @@ class UsuarioController extends Controller
         $model->scenario = Usuarios::ESCENARIO_CREAR;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if (!$model->enviarCorreo()) {
-                Yii::$app->session->setFlash('info', Yii::t('app', 'Error with email'));
+                Yii::$app->session->setFlash('info', Yii::t('app', 'No se ha podido enviar el correo de verificacion'));
                 $model->password = '';
                 $model->password_repeat = '';
                 return $this->render('create', [
                     'model' => $model,
                 ]);
             }
-            Yii::$app->session->setFlash('info', Yii::t('app', 'Review email'));
+            Yii::$app->session->setFlash('info', Yii::t('app', 'Se ha enviado un correo de verificacion , por favor revise su cuenta de correo'));
             return $this->goHome();
         }
 
@@ -93,7 +93,7 @@ class UsuarioController extends Controller
             $check->token_val = null;
             $check->save();
             Yii::$app->user->login($check);
-            Yii::$app->session->setFlash('success', 'Usuario validado con exito');
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Usuario validado con exito'));
         }
         return $this->goHome();
     }
