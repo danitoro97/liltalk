@@ -15,10 +15,10 @@ modules:
             cleanup: false
     enabled:
         - Db:
-            dsn: 'pgsql:host=localhost;dbname=p_test'
-            user: 'p'
-            password: 'p'
-            dump: 'tests/_data/p.sql'
+            dsn: 'pgsql:host=localhost;dbname=liltalk_test'
+            user: 'liltalk'
+            password: 'liltalk'
+            dump: 'db/liltalk.sql'
             populate: true # run populator before all tests
             cleanup: true # run populator before each test
             populator: 'psql -U $user -h $host -d $dbname < $dump'

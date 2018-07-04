@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\Url;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "usuarios".
@@ -20,9 +21,7 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     * Variable para comprobar que introduce la misma contraseña dos veces.
     * @var [type]
     */
-   public $password_repeat;
-
-
+    public $password_repeat;
 
     /**
      * Constante para el escenario crear.
@@ -151,7 +150,6 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
                 if ($this->scenario == self::ESCENARIO_CREAR) {
                     $this->password = Yii::$app->security->generatePasswordHash($this->password);
                 }
-
             } else {
                 //Actualizar
                 if ($this->scenario == self::ESCENARIO_ACTUALIZAR) {
@@ -170,12 +168,10 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
                         //mandar correo
                         Yii::$app->user->logout();
                         if ($this->enviarCorreo()) {
-                            Yii::$app->session->setFlash('info', Yii::t('app', 'Review email'));
+                            Yii::$app->session->setFlash('info', Yii::t('app', 'Se ha enviado un correo de verificacion , por favor revise su cuenta de correo'));
                         } else {
                             Yii::$app->session->setFlash('danger', Yii::t('app', 'Error with email'));
                         }
-
-
                     }
                     if ($this->password == '') {
                         $this->password = $this->getOldAttribute('password');
