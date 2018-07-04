@@ -22,6 +22,10 @@ return [
     'My profile' => 'Mi perfil',
     'Update profile' => 'Modificar perfil',
     'Logout' => 'Desconectar',
-    'Delete account' => 'Eliminar cuenta'
+    'Delete account' => 'Eliminar cuenta',
+    'Update' => 'Actualizar',
+    'Save' => 'Guardar',
+    'Error with email' => 'Ha ocurrido un error al enviar el correo de validacion',
+    'Review email' => 'Revise su correo para validar la cuenta'
 
 ];

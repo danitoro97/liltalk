@@ -5,8 +5,9 @@ $db = require __DIR__ . '/db.php';
 $log = require __DIR__ . '/log.php';
 
 $config = [
-    'on beforeAction' => function($event) {
-        if (isset($_COOKIE['language'])) {
+    'on beforeAction' => function ($event) {
+        $array = ['en-US','es-ES'];
+        if (isset($_COOKIE['language']) && in_array($_COOKIE['language'], $array)) {
             \Yii::$app->language = $_COOKIE['language'];
         }
     },

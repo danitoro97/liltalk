@@ -90,7 +90,7 @@ AppAsset::register($this);
 
         <p class="pull-right"><?= Yii::powered() ?></p>
         <a href="#"><span class="flag-icon flag-icon-es<?=(Yii::$app->language == 'es-ES' ? ' selected' : null)?>" data-value='es-ES'></span></a>
-        <a href="#"><span class="flag-icon flag-icon-us<?=(Yii::$app->language == 'en-US' ? ' selected' : null)?>" data-value='en-US'></span></a>
+        <a href="#"><span class="flag-icon flag-icon-us<?=(Yii::$app->language == 'es-ES' ? null : ' selected')?>" data-value='en-US'></span></a>
 
     </div>
 </footer>

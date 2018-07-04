@@ -49,7 +49,7 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     public function rules()
     {
         return [
-            [['nombre', 'password', 'email'], 'required'],
+            [['nombre', 'email'], 'required'],
             [['password_repeat', 'password'], 'required', 'on' => self::ESCENARIO_CREAR],
              [['password_repeat'], 'compare', 'compareAttribute' => 'password', 'on' => [self::ESCENARIO_CREAR, self::ESCENARIO_ACTUALIZAR]],
             [['nombre', 'password', 'email', 'auth_key'], 'string', 'max' => 255],
@@ -168,9 +168,14 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
                         }
                         $this->token_val = $key;
                         //mandar correo
-                        $this->enviarCorreo();
                         Yii::$app->user->logout();
-                        Yii::$app->session->setFlash('info', 'Haz cambiado el correo debes validar la cuenta , para ello revise su correo');
+                        if ($this->enviarCorreo()) {
+                            Yii::$app->session->setFlash('info', Yii::t('app', 'Review email'));
+                        } else {
+                            Yii::$app->session->setFlash('danger', Yii::t('app', 'Error with email'));
+                        }
+
+
                     }
                     if ($this->password == '') {
                         $this->password = $this->getOldAttribute('password');
@@ -184,14 +189,18 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         return false;
     }
 
+    /**
+     * Envia un correo para la validacion de la cuenta
+     * @return [type] [description]
+     */
     public function enviarCorreo()
     {
-      $enlace = Url::to(['usuario/validar', 'token_val' => $this->token_val], true);
-      return Yii::$app->mailer->compose('validacion', ['token_val' => $this->token_val])
+        $enlace = Url::to(['usuario/validar', 'token_val' => $this->token_val], true);
+        return Yii::$app->mailer->compose('validacion', ['token_val' => $this->token_val])
               ->setFrom(Yii::$app->params['adminEmail'])
               ->setTo($this->email)
-              ->setSubject('Correo de confirmacion de DruidKuma')
-              ->setTextBody('Hola, bienvenido a DruidKuma ' . $enlace . ' Gracias,DruidKuma')
+              ->setSubject('Correo de confirmacion de LilTalk')
+              ->setTextBody('Hola, bienvenido a LilTalk ' . $enlace . ' Gracias,LilTalk')
               ->send();
     }
 }

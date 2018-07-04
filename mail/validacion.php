@@ -10,5 +10,5 @@ use yii\helpers\Url;
 
 Gracias,
 
-DruidKuma
+LilTalk
 </p>

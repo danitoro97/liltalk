@@ -47,21 +47,6 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Lists all Usuarios models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new UsuariosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
      * Displays a single Usuarios model.
      * @param integer $id
      * @return mixed
@@ -85,14 +70,14 @@ class UsuarioController extends Controller
         $model->scenario = Usuarios::ESCENARIO_CREAR;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if (!$model->enviarCorreo()) {
-                Yii::$app->session->setFlash('info', 'Ha ocurrido un error al enviar el correo de validacion');
+                Yii::$app->session->setFlash('info', Yii::t('app', 'Error with email'));
                 $model->password = '';
                 $model->password_repeat = '';
                 return $this->render('create', [
                     'model' => $model,
                 ]);
             }
-            Yii::$app->session->setFlash('info', 'Revise su correo para validar la cuenta');
+            Yii::$app->session->setFlash('info', Yii::t('app', 'Review email'));
             return $this->goHome();
         }
 
@@ -126,7 +111,7 @@ class UsuarioController extends Controller
         $model->password = '';
         $model->scenario = Usuarios::ESCENARIO_ACTUALIZAR;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->goHome();
         }
 
         return $this->render('update', [
