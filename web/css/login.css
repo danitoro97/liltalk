@@ -1,6 +1,14 @@
-.registro {
+.registro > div{
     background-color: #BEEBF7;
-    float: right;
     padding-top: 1%;
     border-radius: 10px;
+}
+
+.registro > div:first-child h3{
+
+    line-height:110%;
+    font-family: Roboto;
+    color: white;
+    text-shadow: 2px 1.5px 3px #727373;
+    text-align: center;
 }
