@@ -48,7 +48,7 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     public function rules()
     {
         return [
-            [['nombre', 'email'], 'required'],
+            [['nombre', 'email','biografia'], 'required'],
             [['password_repeat', 'password'], 'required', 'on' => self::ESCENARIO_CREAR],
              [['password_repeat'], 'compare', 'compareAttribute' => 'password', 'on' => [self::ESCENARIO_CREAR, self::ESCENARIO_ACTUALIZAR]],
             [['nombre', 'password', 'email', 'auth_key'], 'string', 'max' => 255],
