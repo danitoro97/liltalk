@@ -9,32 +9,36 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = Yii::t('app', 'Iniciar sesión');
 $this->params['breadcrumbs'][] = $this->title;
+$this->registerCssFile("@web/css/login.css");
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
+    <div class="container">
+        <?php $form = ActiveForm::begin([
+            'id' => 'login-form',
 
+        ]); ?>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-    ]); ?>
-
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton(Yii::t('app', 'Iniciar sesión'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+        <div class="row registro">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                </div>
+                <div class="col-md-12">
+                    <?= $form->field($model, 'password')->passwordInput() ?>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-1">
+                        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                    </div>
+                    <div class="col-md-3">
+                        <?= Html::submitButton(Yii::t('app', 'Iniciar sesión'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    </div>
+                </div>
             </div>
         </div>
 
     <?php ActiveForm::end(); ?>
-
+    </div>
 
 </div>

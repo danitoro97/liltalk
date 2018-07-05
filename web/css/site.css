@@ -168,6 +168,12 @@ nav > .container > div:last-child > ul > li:last-child {
     border: 2px solid black;
 }
 
+.form-control{
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
+
 /*
 
 white fondo

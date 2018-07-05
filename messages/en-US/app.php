@@ -24,6 +24,7 @@ return [
     'Guardar' => 'Save',
     'Nombre de usuario' => 'Username',
     'Recuerdame' => 'Remember me',
+    'Nombre de usuario incorrecto o contraseña' => 'Incorrect username or password',
     'No se ha podido enviar el correo de verificacion' => '',
     'Se ha enviado un correo de verificacion , por favor revise su cuenta de correo' => '',
     'Usuario validado con exito' => '',
