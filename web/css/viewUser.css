@@ -1,0 +1,9 @@
+.titulo {
+    background-color: #BEEBF7;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+.titulo h1 {
+    margin-left: 10px;
+}
