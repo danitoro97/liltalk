@@ -20,15 +20,13 @@ $this->registerCssFile("@web/css/login.css");
         ]); ?>
 
         <div class="row registro">
-            <div class="col-md-4">
-                <h3>Por qué usar LilTalk?<br><br>
-                    LilTalk es un sitio perfecto para conocer gente, conversar sobre intereses comunes y pasar un buen rato chateando con aquellos alrededor del mundo.
 
-<br><br>Pruébalo ahora, es gratis!<br></h3>
+            <div class="col-md-4">
+                <h3><?=Yii::t('app', 'Por qué usar LilTalk?<br><br>LilTalk es un sitio perfecto para conocer gente, conversar sobre intereses comunes y pasar un buen rato chateando con aquellos alrededor del mundo.<br><br>Pruébalo ahora, es gratis!<br>')?></h3>
             </div>
             <div class="col-md-6 col-md-offset-2">
                 <div class="col-md-12">
-                    <h4>Puedes disfrutar de la experiencia registrándote ahora</h4>
+                        <h4><?=Yii::t('app' , 'Puedes disfrutar de la experiencia registrándote ahora') . ' ' . Html::a(Yii::t('app', 'Crear cuenta'), ['usuario/create'], ['class' => 'btn btn-sm btn-info'])?></h4>
                 </div>
                 <div class="col-md-12">
                     <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>

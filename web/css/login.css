@@ -2,6 +2,7 @@
     background-color: #BEEBF7;
     padding-top: 1%;
     border-radius: 10px;
+    margin-top: 5%;
 }
 
 .registro > div:first-child h3{
@@ -11,4 +12,13 @@
     color: white;
     text-shadow: 2px 1.5px 3px #727373;
     text-align: center;
+}
+
+.btn-info {
+    background-color: white !important;
+    color: black !important;
+}
+.btn-info:hover {
+    background-color: black !important;
+    color: white !important;
 }
