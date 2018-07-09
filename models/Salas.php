@@ -46,7 +46,6 @@ class Salas extends \yii\db\ActiveRecord
             [['privada'], 'boolean'],
             [['created_at'], 'safe'],
             [['nombre'], 'string', 'max' => 255],
-            [['creador_id'], 'unique'],
             [['nombre'], 'unique'],
             [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categorias::className(), 'targetAttribute' => ['categoria_id' => 'id']],
             [['creador_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['creador_id' => 'id']],
@@ -60,12 +59,12 @@ class Salas extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'nombre' => 'Nombre',
-            'creador_id' => 'Creador ID',
-            'descripcion' => 'Descripcion',
-            'categoria_id' => 'Categoria ID',
-            'numero_participantes' => 'Numero Participantes',
-            'privada' => 'Privada',
+            'nombre' => Yii::t('app', 'Nombre'),
+            'creador_id' => Yii::t('app', 'Administrador'),
+            'descripcion' => Yii::t('app', 'Descripcion'),
+            'categoria_id' => Yii::t('app', 'Tema'),
+            'numero_participantes' => Yii::t('app', 'Numero Participantes'),
+            'privada' => Yii::t('app', 'Privada'),
             'created_at' => 'Created At',
         ];
     }

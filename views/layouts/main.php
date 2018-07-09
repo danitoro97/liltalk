@@ -40,7 +40,7 @@ AppAsset::register($this);
     ]);
     $item = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => Yii::t('app', 'Sobre'), 'url' => ['/site/about']],
+        ['label' => Yii::t('app', 'Crear sala'), 'url' => ['/salas/create']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
    ];
 

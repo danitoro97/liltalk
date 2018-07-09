@@ -3,7 +3,7 @@
 
 
 Traducciones al espanol
-
+//Cada tema o categoria de las salas debe estar aqui traducidas
 
  */
 
@@ -34,4 +34,16 @@ return [
     'Hola, bienvenido a' => '',
     'Haz click en el siguiente enlace para validar su cuenta' => '',
     'Crear cuenta' => '',
+    'Crear sala' => '',
+    'Administrador' => '',
+    'Descripcion' => '',
+    'Tema' => '',
+    'Numero de participantes' => '',
+    'Privada' => '',
+    'Salas' => '',
+    'Musica' => '',
+    'Politica' => '',
+    'Ciencia' => '',
+    'Otros'=> '',
+
 ];

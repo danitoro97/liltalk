@@ -39,7 +39,7 @@ CREATE TABLE salas
 (
     id bigserial primary key,
     nombre varchar(255) not null unique,
-    creador_id bigint not null unique references usuarios(id)
+    creador_id bigint not null references usuarios(id)
                                         on delete CASCADE
                                         on update CASCADE,
     descripcion text,
