@@ -34,8 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'descripcion:ntext',
             'categoria_id',
             'numero_participantes',
-            'privada:boolean',
-            'created_at',
+            
         ],
     ]) ?>
 

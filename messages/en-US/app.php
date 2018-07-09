@@ -45,5 +45,6 @@ return [
     'Politica' => '',
     'Ciencia' => '',
     'Otros'=> '',
+    'No hay salas disponibles , crea una si lo desea' => '',
 
 ];

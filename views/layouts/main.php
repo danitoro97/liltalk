@@ -61,7 +61,7 @@ AppAsset::register($this);
               ],
               '<li class="divider"></li>',
               [
-                  'label' => Yii::t('app', 'Borrar cuenta'),
+                  'label' => Yii::t('app', 'Eliminar cuenta'),
                   'url' => ['usuarios/delete'],
                   'linkOptions' => ['data-method' => 'POST'],
               ],

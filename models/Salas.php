@@ -108,4 +108,19 @@ class Salas extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'creador_id'])->inverseOf('salas');
     }
+
+    /**
+     * Cuando creas una sala ,eres el primer participante en ella
+     * @param  [type] $insert           [description]
+     * @param  [type] $changeAttributes [description]
+     * @return [type]                   [description]
+     */
+    public function afterSave($insert, $changeAttributes)
+    {
+
+        if ($insert) {
+            $participantes = new Participantes(['sala_id'=> $this->id, 'usuario_id'=>$this->creador_id]);
+            $participantes->save();
+        }
+    }
 }

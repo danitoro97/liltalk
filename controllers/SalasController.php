@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Salas;
 use app\models\SalasSearch;
+use app\models\Participantes;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -29,11 +30,11 @@ class SalasController extends Controller
             ],
             'acess' => [
                 'class' => AccessControl::className(),
-                'only' => ['delete','create'],
+                'only' => ['delete','create','buscar','view'],
                 'rules' =>
                 [
                     [
-                        'actions' => ['delete','create'],
+                        'actions' => ['delete','create','buscar','view'],
                         'allow' => true,
                         'roles' => ['@']
                     ],
@@ -59,6 +60,27 @@ class SalasController extends Controller
     }
 
     /**
+     * Busca cualquier sala que este disponible
+     * @return [type] [description]
+     */
+    public function actionBuscar()
+    {
+
+        $model = \app\models\SalasDisponibles::find()->one();
+
+        if ($model == null) {
+            Yii::$app->session->setFlash('info', Yii::t('app', 'No hay salas disponibles , crea una si lo desea'));
+            return $this->redirect(['index']);
+        }
+
+        $participantes = new Participantes(['usuario_id' => Yii::$app->user->identity->id, 'sala_id'=> $model->id]);
+        $participantes->save();
+        return $this->render('view', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
      * Displays a single Salas model.
      * @param integer $id
      * @return mixed
@@ -66,6 +88,9 @@ class SalasController extends Controller
      */
     public function actionView($id)
     {
+        if (!$this->isParticipante($id)) {
+            throw new NotFoundHttpException('No puedes acceder a esta pagina.');
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -82,7 +107,7 @@ class SalasController extends Controller
         $model->creador_id = Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } 
+        }
 
         return $this->render('create', [
             'model' => $model,
@@ -118,5 +143,16 @@ class SalasController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Comprueba si el usuario logeado es participante de una sala concreta
+     * @param  [type]  $sala_id [description]
+     * @return boolean          [description]
+     */
+    public function isParticipante($sala_id)
+    {
+        return Participantes::find()->where(['usuario_id' => Yii::$app->user->identity->id])
+        ->andWhere(['sala_id'=> $sala_id])->all() != null;
     }
 }

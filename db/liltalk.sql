@@ -52,7 +52,7 @@ CREATE TABLE salas
 );
 
 INSERT INTO  salas (nombre,creador_id,descripcion,categoria_id,numero_participantes)
-VALUES ('Primera sala',1,'Sala de prueba',1,2),('Segunda sala',2,'Sala de prueba2',1,5);
+VALUES ('Primera sala',1,'Sala de prueba',1,2);
 
 -- Tabla participantes --
 DROP TABLE IF EXISTS participantes CASCADE;
@@ -73,12 +73,13 @@ VALUES (1,1),(2,1);
 
 --Vista salas disponibles --
 CREATE VIEW salas_disponibles as
-    SELECT sala_id,nombre,descripcion,categoria_id,numero_participantes,salas.id
+    SELECT sala_id,nombre,descripcion,categoria_id,numero_participantes,salas.id,creador_id
     FROM salas
     		LEFT JOIN participantes p ON salas.id = p.sala_id
     WHERE privada = FALSE
-    GROUP BY sala_id,numero_participantes,nombre,descripcion,categoria_id,salas.id
-    HAVING numero_participantes > count(*);
+    GROUP BY sala_id,numero_participantes,nombre,descripcion,categoria_id,salas.id,creador_id
+    HAVING numero_participantes > count(*)
+    ORDER BY created_at DESC;
 
 
 -- Triggers --
