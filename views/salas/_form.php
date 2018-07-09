@@ -13,7 +13,7 @@ use kartik\widgets\Select2;
 
 <div class="salas-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id'=> 'salas-form']); ?>
 
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 

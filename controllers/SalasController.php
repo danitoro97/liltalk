@@ -82,14 +82,14 @@ class SalasController extends Controller
 
     /**
      * Displays a single Salas model.
-     * @param integer $id
+     * @param  $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
         if (!$this->isParticipante($id)) {
-            throw new NotFoundHttpException('No puedes acceder a esta pagina.');
+            throw new NotFoundHttpException(Yii::t('app', 'No puedes acceder a esta pagina.'));
         }
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -148,7 +148,6 @@ class SalasController extends Controller
     /**
      * Comprueba si el usuario logeado es participante de una sala concreta
      * @param  [type]  $sala_id [description]
-     * @return boolean          [description]
      */
     public function isParticipante($sala_id)
     {

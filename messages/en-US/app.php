@@ -46,5 +46,6 @@ return [
     'Ciencia' => '',
     'Otros'=> '',
     'No hay salas disponibles , crea una si lo desea' => '',
+    'No puedes acceder a esta pagina.' => '',
 
 ];

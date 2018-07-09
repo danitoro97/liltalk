@@ -20,6 +20,7 @@ class UsuariosCest
             'Usuarios[password]' => 'cat9eat',
             'Usuarios[password_repeat]' => 'cat9eat',
             'Usuarios[email]' => 'danitonispam@gmail.com',
+            'Usuarios[biografia]' => 'Prueba'
 
         ]);
         $I->see('Se ha enviado un correo de verificacion , por favor revise su cuenta de correo');
@@ -56,6 +57,7 @@ class UsuariosCest
         $I->submitForm('#create-form', [
             'Usuarios[nombre]' => 'toro',
             'Usuarios[email]' => 'danitonispam@gmail.com',
+            'Usuarios[biografia]' => 'Prueba'
         ]);
         $I->see('Se ha enviado un correo de verificacion , por favor revise su cuenta de correo');
     }
