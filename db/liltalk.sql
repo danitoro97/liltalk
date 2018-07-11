@@ -65,11 +65,12 @@ CREATE TABLE participantes
     sala_id bigint not null references salas(id)
                                         on delete CASCADE
                                         on update CASCADE,
+    color varchar(7),
     CONSTRAINT uq_sala_usuario UNIQUE (usuario_id,sala_id)
 );
 
-INSERT INTO participantes (usuario_id,sala_id)
-VALUES (1,1),(2,1);
+INSERT INTO participantes (usuario_id,sala_id,color)
+VALUES (1,1,'#aabbcc'),(2,1,'#ff0000');
 
 --Vista salas disponibles --
 CREATE VIEW salas_disponibles as
@@ -116,7 +117,8 @@ CREATE TABLE mensajes
     sala_id bigint not null references salas(id)
                                         on delete CASCADE
                                         on update CASCADE,
-    mensaje varchar(255) not null
+    mensaje varchar(255) not null,
+    created_at timestamp default current_timestamp
 );
 
 INSERT INTO mensajes (sala_id,usuario_id,mensaje)

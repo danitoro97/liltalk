@@ -179,6 +179,17 @@ textarea {
     -moz-border-radius: 10px !important;
     border-radius: 10px !important;
 }
+
+#mensajes {
+    border: 3px solid black;
+}
+
+.mensaje-propio {
+    float: right;
+}
+.mensaje-propio p {
+    text-align: right;
+}
 /*
 
 white fondo

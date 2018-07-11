@@ -66,4 +66,14 @@ class Participantes extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'usuario_id'])->inverseOf('participantes');
     }
+
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            $this->color = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+            return true;
+        }
+        return false;
+    }
 }

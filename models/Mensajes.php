@@ -68,4 +68,9 @@ class Mensajes extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'usuario_id'])->inverseOf('mensajes');
     }
+
+    public function getParticipante()
+    {
+        return $this->hasOne(Participantes::className(), ['usuario_id' => 'usuario_id']);
+    }
 }
