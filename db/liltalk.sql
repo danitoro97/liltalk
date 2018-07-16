@@ -118,7 +118,8 @@ CREATE TABLE mensajes
                                         on delete CASCADE
                                         on update CASCADE,
     mensaje varchar(255) not null,
-    created_at timestamp default current_timestamp
+    created_at TIMESTAMP(0),
+    updated_at TIMESTAMP(0)
 );
 
 INSERT INTO mensajes (sala_id,usuario_id,mensaje)

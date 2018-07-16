@@ -4,6 +4,10 @@ namespace app\models;
 
 use Yii;
 
+use yii\db\Expression;
+
+use yii\behaviors\TimestampBehavior;
+
 /**
  * This is the model class for table "mensajes".
  *
@@ -38,6 +42,22 @@ class Mensajes extends \yii\db\ActiveRecord
             [['sala_id'], 'exist', 'skipOnError' => true, 'targetClass' => Salas::className(), 'targetAttribute' => ['sala_id' => 'id']],
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['usuario_id' => 'id']],
         ];
+    }
+
+    /**
+     * Comportamiento para añadir hora de creacion y modifiacion.
+     * @return [type] [description]
+     */
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(), [
+            [
+            'class' => TimestampBehavior::className(),
+            'createdAtAttribute' => 'created_at',
+            'updatedAtAttribute' => 'updated_at',
+            'value' => new Expression('NOW()'),
+            ],
+        ]);
     }
 
     /**
