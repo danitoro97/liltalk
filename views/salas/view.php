@@ -11,6 +11,7 @@ $this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Salas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $ruta = Url::to(['mensajes/crear']);
+$nuevosMensajes = Url::to(['mensajes/view']);
 $js = <<<EOT
 $('#enviar-mensaje').on('click', mensajes);
 $('#area-mensaje').on('keypress', function(evt) {
@@ -38,6 +39,27 @@ function mensajes (evt) {
         })
     }
 }
+
+console.log($('#mensajes').find('div').last().attr('data-id'));
+
+setInterval(function()
+{
+    var id = $('#mensajes').find('div').last().attr('data-id');
+    if (id == undefined) {
+        id = 0;
+    }
+    $.ajax({
+        url:'$nuevosMensajes',
+        type:'get',
+        data: {
+            id: $('#mensajes').find('div').last().attr('data-id'),
+            sala_id: '$model->id'
+        },
+        success: function(data){
+            $('#mensajes').append(data);
+        }
+    })
+}, 1000);
 
 EOT;
 $this->registerJs($js);

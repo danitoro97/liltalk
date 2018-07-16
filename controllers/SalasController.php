@@ -75,8 +75,8 @@ class SalasController extends Controller
 
         $participantes = new Participantes(['usuario_id' => Yii::$app->user->identity->id, 'sala_id'=> $model->id]);
         $participantes->save();
-        return $this->render('view', [
-            'model' => $model,
+        return $this->redirect(['view',
+            'id' => $model->id,
         ]);
     }
 
