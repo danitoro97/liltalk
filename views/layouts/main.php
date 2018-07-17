@@ -23,7 +23,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode(Yii::$app->name) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -43,7 +43,7 @@ AppAsset::register($this);
         ['label' => Yii::t('app', 'Buscar sala automaticamente'), 'url' => ['/salas/buscar']],
         ['label' => Yii::t('app', 'Buscar sala manualmente'), 'url' => ['/salas/index']],
         ['label' => Yii::t('app', 'Crear sala'), 'url' => ['/salas/create']],
-        
+
    ];
 
    if (Yii::$app->user->isGuest) {
