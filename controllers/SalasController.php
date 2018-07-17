@@ -30,11 +30,11 @@ class SalasController extends Controller
             ],
             'acess' => [
                 'class' => AccessControl::className(),
-                'only' => ['delete','create','buscar','view'],
+                'only' => ['delete','create','buscar','view','abandonar','expulsar'],
                 'rules' =>
                 [
                     [
-                        'actions' => ['delete','create','buscar','view'],
+                        'actions' => ['delete','create','buscar','view','abandonar','expulsar'],
                         'allow' => true,
                         'roles' => ['@']
                     ],
@@ -82,14 +82,15 @@ class SalasController extends Controller
 
     /**
      * Displays a single Salas model.
-     * @param  $id
+     * @param  [integer] $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
         if (!$this->isParticipante($id)) {
-            throw new NotFoundHttpException(Yii::t('app', 'No puedes acceder a esta pagina.'));
+            Yii::$app->session->setFlash('info', Yii::t('app', 'No puedes acceder a esta pagina.'));
+            $this->redirect(['index']);
         }
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -127,6 +128,40 @@ class SalasController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Un participantes estandar de la sala , deja la sala
+     * @param  [type] $sala_id [description]
+     * @return [type]          [description]
+     */
+    public function actionAbandonar($sala_id)
+    {
+        $model = Participantes::find()
+                ->where(['sala_id' => $sala_id])
+                ->andWhere(['usuario_id' => Yii::$app->user->identity->id])
+                ->one();
+        $model->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * El creador de la sala puede expulsar a participantes de la misma
+     * @return [type] [description]
+     */
+    public function actionExpulsar()
+    {
+        if (Yii::$app->request->isAjax && Yii::$app->request->isPost) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            $model = Participantes::find()
+                    ->where(['sala_id' => Yii::$app->request->post('sala_id')])
+                    ->andWhere(['usuario_id' => Yii::$app->request->post('usuario_id')])
+                    ->one();
+            if ($model != null && $model->sala->creador_id == Yii::$app->user->identity->id) {
+                    return $model->delete();
+            }
+        }
     }
 
     /**

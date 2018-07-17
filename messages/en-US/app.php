@@ -47,5 +47,8 @@ return [
     'Otros'=> '',
     'No hay salas disponibles , crea una si lo desea' => '',
     'No puedes acceder a esta pagina.' => '',
-
+    'Expulsa al usuario de la sala' => '',
+    '¿Estas seguro que deseas eliminar esta sala ?'=>'',
+    '¿Estas seguro que deseas abandonar esta sala ?' => '',
+    'Expulsa al usuario de la sala' => '',
 ];
