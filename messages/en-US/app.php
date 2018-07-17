@@ -3,7 +3,7 @@
 
 
 Traducciones al espanol
-
+//Cada tema o categoria de las salas debe estar aqui traducidas
 
  */
 
@@ -34,4 +34,23 @@ return [
     'Hola, bienvenido a' => '',
     'Haz click en el siguiente enlace para validar su cuenta' => '',
     'Crear cuenta' => '',
+    'Crear sala' => '',
+    'Administrador' => '',
+    'Descripcion' => '',
+    'Tema' => '',
+    'Numero de participantes' => '',
+    'Privada' => '',
+    'Salas' => '',
+    'Musica' => '',
+    'Politica' => '',
+    'Ciencia' => '',
+    'Otros'=> '',
+    'No hay salas disponibles , crea una si lo desea' => '',
+    'No puedes acceder a esta pagina.' => '',
+    'Expulsa al usuario de la sala' => '',
+    '¿Estas seguro que deseas eliminar esta sala ?'=>'',
+    '¿Estas seguro que deseas abandonar esta sala ?' => '',
+    'Expulsa al usuario de la sala' => '',
+    'Buscar sala automaticamente' => '',
+    'Buscar sala manualmente' => '',
 ];

@@ -40,8 +40,10 @@ AppAsset::register($this);
     ]);
     $item = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => Yii::t('app', 'Sobre'), 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => Yii::t('app', 'Buscar sala automaticamente'), 'url' => ['/salas/buscar']],
+        ['label' => Yii::t('app', 'Buscar sala manualmente'), 'url' => ['/salas/index']],
+        ['label' => Yii::t('app', 'Crear sala'), 'url' => ['/salas/create']],
+        
    ];
 
    if (Yii::$app->user->isGuest) {
@@ -61,7 +63,7 @@ AppAsset::register($this);
               ],
               '<li class="divider"></li>',
               [
-                  'label' => Yii::t('app', 'Borrar cuenta'),
+                  'label' => Yii::t('app', 'Eliminar cuenta'),
                   'url' => ['usuarios/delete'],
                   'linkOptions' => ['data-method' => 'POST'],
               ],

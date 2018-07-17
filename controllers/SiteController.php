@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Salas;
+
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -20,10 +22,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout','index'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

@@ -186,6 +186,36 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     }
 
     /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getMensajes()
+    {
+        return $this->hasMany(Mensajes::className(), ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getParticipantes()
+    {
+        return $this->hasMany(Participantes::className(), ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
+
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getSalas()
+    {
+        return $this->hasMany(Salas::className(), ['id' => 'sala_id'])->viaTable('participantes', ['usuario_id' => 'id'])->inverseOf('creador');
+    }
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getSalas0()
+    {
+        return $this->hasMany(Salas::className(), ['creador_id' => 'id']);
+    }
+
+    /**
      * Envia un correo para la validacion de la cuenta
      * @return [type] [description]
      */
