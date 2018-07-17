@@ -30,11 +30,11 @@ class SalasController extends Controller
             ],
             'acess' => [
                 'class' => AccessControl::className(),
-                'only' => ['delete','create','buscar','view','abandonar','expulsar'],
+                'only' => ['delete','create','buscar','view','abandonar','expulsar','participar'],
                 'rules' =>
                 [
                     [
-                        'actions' => ['delete','create','buscar','view','abandonar','expulsar'],
+                        'actions' => ['delete','create','buscar','view','abandonar','expulsar','participar'],
                         'allow' => true,
                         'roles' => ['@']
                     ],
@@ -77,6 +77,20 @@ class SalasController extends Controller
         $participantes->save();
         return $this->redirect(['view',
             'id' => $model->id,
+        ]);
+    }
+
+    /**
+     * Te unes a una sala
+     * @param  [type] $sala_id [description]
+     * @return [type]          [description]
+     */
+    public function actionParticipar($sala_id)
+    {
+        $participantes = new Participantes(['usuario_id' => Yii::$app->user->identity->id, 'sala_id'=> $sala_id]);
+        $participantes->save();
+        return $this->redirect(['view',
+            'id' => $this->findModel($sala_id)->id,
         ]);
     }
 

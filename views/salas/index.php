@@ -34,7 +34,15 @@ $this->params['breadcrumbs'][] = $this->title;
             //'privada:boolean',
             //'created_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{participar}',
+                'buttons' => [
+                    'participar' => function($url, $model, $key){
+                        return Html::a(Yii::t('app', 'Participar'), ['salas/participar', 'sala_id' => $model->id], ['class' => 'btn btn-info']);
+                    }
+                ]
+            ],
         ],
     ]); ?>
 </div>

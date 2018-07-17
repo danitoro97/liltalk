@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Salas;
+
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;

@@ -40,8 +40,10 @@ AppAsset::register($this);
     ]);
     $item = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => Yii::t('app', 'Buscar sala automaticamente'), 'url' => ['/salas/buscar']],
+        ['label' => Yii::t('app', 'Buscar sala manualmente'), 'url' => ['/salas/index']],
         ['label' => Yii::t('app', 'Crear sala'), 'url' => ['/salas/create']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        
    ];
 
    if (Yii::$app->user->isGuest) {

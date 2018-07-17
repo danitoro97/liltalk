@@ -190,6 +190,12 @@ textarea {
 .mensaje-propio p {
     text-align: right;
 }
+
+.index-sala {
+    border: 2px solid #BEEBF7 ;
+    border-radius: 10px;
+    padding: 10px;
+}
 /*
 
 white fondo

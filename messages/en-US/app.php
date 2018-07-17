@@ -51,4 +51,6 @@ return [
     '¿Estas seguro que deseas eliminar esta sala ?'=>'',
     '¿Estas seguro que deseas abandonar esta sala ?' => '',
     'Expulsa al usuario de la sala' => '',
+    'Buscar sala automaticamente' => '',
+    'Buscar sala manualmente' => '',
 ];
