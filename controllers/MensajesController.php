@@ -50,12 +50,7 @@ class MensajesController extends \yii\web\Controller
 
                 ]
             );
-            if ($model->save()) {
-                $model->refresh();
-                return $this->renderPartial('/salas/_mensajes', ['model' => $model]);
-            } else {
-                return '<p>Error</p>';
-            }
+            return $model->save();
         }
     }
 

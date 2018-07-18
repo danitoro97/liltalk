@@ -36,8 +36,12 @@ function mensajes (evt) {
                 sala_id : '$model->id'
             },
             success : function (data) {
-                $('#mensajes').append(data);
-                input.val(null);
+                if (data) {
+                    input.val(null);
+                } else {
+                    $('#mensajes').append('<p>Error</p>');
+                }
+
             }
         })
     }
