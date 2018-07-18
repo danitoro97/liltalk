@@ -24,7 +24,7 @@ use kartik\widgets\Select2;
     $data = Categorias::find()->all();
     $result = [];
     foreach ($data as $tema) {
-        $result[] = Yii::t('app', $tema->nombre);
+        $result[$tema->id] = Yii::t('app', $tema->nombre);
     }
 
     ?>

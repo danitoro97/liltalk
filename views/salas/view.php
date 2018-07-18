@@ -93,7 +93,7 @@ $this->registerCssFile('@web/css/salas.css');
 ?>
 <div class="salas-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?> : <?=Yii::t('app', $model->categoria->nombre)?></h1>
     <div class="container">
         <div class="row">
             <div class="col-md-2 participante">

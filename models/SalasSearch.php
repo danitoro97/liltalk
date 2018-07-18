@@ -19,10 +19,18 @@ class SalasSearch extends Salas
     {
         return [
             [['id', 'creador_id', 'categoria_id'], 'integer'],
-            [['nombre', 'descripcion', 'created_at'], 'safe'],
+            [['nombre', 'descripcion', 'created_at','creador.nombre','categoria.nombre'], 'safe'],
             [['numero_participantes'], 'number'],
             [['privada'], 'boolean'],
         ];
+    }
+
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), [
+            'categoria.nombre',
+            'creador.nombre'
+        ]);
     }
 
     /**
@@ -43,13 +51,19 @@ class SalasSearch extends Salas
      */
     public function search($params)
     {
-        $query = Salas::find();
+        $query = Salas::find()
+        ->joinWith(['categoria']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['categoria.nombre'] = [
+            'asc' => ['categorias.nombre' => SORT_ASC],
+            'desc' => ['categorias.nombre' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -69,7 +83,9 @@ class SalasSearch extends Salas
             'created_at' => $this->created_at,
         ]);
 
-        $query->andFilterWhere(['ilike', 'nombre', $this->nombre])
+        $query->andFilterWhere(['ilike', 'salas.nombre', $this->nombre])
+            ->andFilterWhere(['ilike', 'categorias.nombre', $this->getAttribute('categoria.nombre')])
+            //->andFilterWhere(['ilike', 'usuarios.nombre', $this->getAttribute('creador.nombre')])
             ->andFilterWhere(['ilike', 'descripcion', $this->descripcion]);
 
         return $dataProvider;
