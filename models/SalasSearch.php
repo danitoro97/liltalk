@@ -51,7 +51,8 @@ class SalasSearch extends Salas
      */
     public function search($params)
     {
-        $query = Salas::find()
+        $query = SalasDisponibles::find()
+        ->joinWith(['salas'])
         ->joinWith(['categoria']);
 
         // add conditions that should always apply here

@@ -23,6 +23,10 @@ class SalasDisponibles extends \yii\db\ActiveRecord
         return 'salas_disponibles';
     }
 
+    public static function primaryKey()
+    {
+        return ['id'];
+    }
 
     /**
      * {@inheritdoc}
@@ -45,11 +49,28 @@ class SalasDisponibles extends \yii\db\ActiveRecord
     {
         return [
             'sala_id' => 'Sala ID',
-            'nombre' => 'Nombre',
-            'descripcion' => 'Descripcion',
+            'nombre' => Yii::t('app', 'Nombre de la Sala'),
+            'descripcion' => Yii::t('app', 'Descripcion'),
             'categoria_id' => 'Categoria ID',
             'numero_participantes' => 'Numero Participantes',
         ];
     }
 
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategoria()
+    {
+        return $this->hasOne(Categorias::className(), ['id' => 'categoria_id'])->inverseOf('salas');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSalas()
+    {
+        return $this->hasOne(Salas::className(), ['id' => 'sala_id']);
+    }
 }
