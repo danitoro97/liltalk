@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Salas;
+use app\models\Participantes;
 
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -63,7 +64,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index', [
+            'model' => Participantes::find()
+                        ->where(['usuario_id' => Yii::$app->user->identity->id])
+                        ->all(),
+        ]);
     }
 
     /**

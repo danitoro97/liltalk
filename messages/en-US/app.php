@@ -53,4 +53,5 @@ return [
     'Expulsa al usuario de la sala' => '',
     'Buscar sala automaticamente' => '',
     'Buscar sala manualmente' => '',
+    'Mis salas' => '',
 ];

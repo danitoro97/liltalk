@@ -182,20 +182,32 @@ textarea {
 
 #mensajes {
     border: 3px solid black;
+    background-image: url('fondo-claro.jpg');
 }
 
-.mensaje-propio {
-    float: right;
-}
-.mensaje-propio p {
-    text-align: right;
-}
 
 .index-sala {
     border: 2px solid #BEEBF7 ;
     border-radius: 10px;
     padding: 10px;
 }
+
+.index-salas a {
+    border: 1px solid grey;
+    padding: 2%;
+    border-radius: 10px;
+}
+#mensajes p {
+    display:inline-block;
+    padding: 1%;
+    font-weight: bold;
+}
+.mensaje-propio p {
+    text-align: right;
+    float:right;
+
+}
+
 /*
 
 white fondo
