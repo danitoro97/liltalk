@@ -96,44 +96,49 @@ $this->registerCssFile('@web/css/salas.css');
     <h1><?= Html::encode($this->title) ?> : <?=Yii::t('app', $model->categoria->nombre)?></h1>
     <div class="container">
         <div class="row">
-            <div class="col-md-2 participante">
-                Participantes
-                <?php if (isset($model->participantes) && $model->participantes != null): ?>
-                    <?php foreach ($model->participantes as $participante) : ?>
-                        <?= $this->render('_participante', ['model' => $participante]) ?>
-                    <?php endforeach ?>
-                <?php endif;?>
+            <div class="col-md-10 col-md-offset-1 chat">
+                <div class="col-md-2 participante">
+                    <div class="numero">
+                        <h3>N/N</h3>
+                        <?php if ($model->creador_id == Yii::$app->user->identity->id) :?>
+                                <?=Html::a(Yii::t('app', 'Eliminar sala'), ['salas/delete', 'id' => $model->id], [
+                                    'class' => 'btn btn-sm btn-danger',
+                                    'data' => [
+                                       'confirm' => Yii::t('app', '¿Estas seguro que deseas eliminar esta sala ?'),
+                                       'method' => 'post',
+                                   ]
+                                ])?>
+                        <?php else : ?>
+                                <?=Html::a(Yii::t('app', 'Abandonar sala'), ['salas/abandonar', 'sala_id' => $model->id], [
+                                    'class' => 'btn btn-sm btn-danger',
+                                    'data' => [
+                                       'confirm' => Yii::t('app', '¿Estas seguro que deseas abandonar esta sala ?'),
+                                       'method' => 'post',
+                                   ]
+                                ])?>
+                        <?php endif;?>
+                    </div>
+
+                    <?php if (isset($model->participantes) && $model->participantes != null): ?>
+                        <?php foreach ($model->participantes as $participante) : ?>
+                            <?= $this->render('_participante', ['model' => $participante]) ?>
+                        <?php endforeach ?>
+                    <?php endif;?>
+                </div>
+                <div class="col-md-10" id="mensajes">
+                    <?php if (isset($model->mensajes) && $model->mensajes != null): ?>
+                        <?php foreach ($model->getMensajes()->orderBy('created_at ASC')->limit(20)->all() as $mensaje) : ?>
+                            <?= $this->render('_mensajes', ['model' => $mensaje]) ?>
+                        <?php endforeach ?>
+                    <?php endif;?>
+
+                </div>
+                <div class="col-md-10 col-md-offset-2">
+                    <input type="text" name="mensaje" value="" id="area-mensaje">
+                    <a href="#" class="btn btn-sm btn-success" id="enviar-mensaje">Enviar</a>
+                </div>
             </div>
-            <div class="col-md-7 col-md-offset-1" id="mensajes">
-                <?php if (isset($model->mensajes) && $model->mensajes != null): ?>
-                    <?php foreach ($model->getMensajes()->orderBy('created_at ASC')->limit(20)->all() as $mensaje) : ?>
-                        <?= $this->render('_mensajes', ['model' => $mensaje]) ?>
-                    <?php endforeach ?>
-                <?php endif;?>
-            </div>
-            <div class="col-md-2">
-                <?php if ($model->creador_id == Yii::$app->user->identity->id) :?>
-                    <?=Html::a(Yii::t('app', 'Eliminar sala'), ['salas/delete', 'id' => $model->id], [
-                        'class' => 'btn btn-sm btn-danger',
-                        'data' => [
-                           'confirm' => Yii::t('app', '¿Estas seguro que deseas eliminar esta sala ?'),
-                           'method' => 'post',
-                       ]
-                    ])?>
-                <?php else : ?>
-                    <?=Html::a(Yii::t('app', 'Abandonar sala'), ['salas/abandonar', 'sala_id' => $model->id], [
-                        'class' => 'btn btn-sm btn-danger',
-                        'data' => [
-                           'confirm' => Yii::t('app', '¿Estas seguro que deseas abandonar esta sala ?'),
-                           'method' => 'post',
-                       ]
-                    ])?>
-                <?php endif;?>
-            </div>
-            <div class="col-md-7 col-md-offset-3 boton">
-                <input type="text" name="mensaje" value="" id="area-mensaje">
-                <a href="#" class="btn btn-sm btn-success" id="enviar-mensaje">Enviar</a>
-            </div>
+
         </div>
     </div>
 
