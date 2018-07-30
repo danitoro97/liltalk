@@ -99,7 +99,7 @@ $this->registerCssFile('@web/css/salas.css');
             <div class="col-md-10 col-md-offset-1 chat">
                 <div class="col-md-2 participante">
                     <div class="numero">
-                        <h3>N/N</h3>
+                        <h3><?=$model->getParticipantes()->count()?>/<?=Html::encode($model->numero_participantes)?></h3>
                         <?php if ($model->creador_id == Yii::$app->user->identity->id) :?>
                                 <?=Html::a(Yii::t('app', 'Eliminar sala'), ['salas/delete', 'id' => $model->id], [
                                     'class' => 'btn btn-sm btn-danger',

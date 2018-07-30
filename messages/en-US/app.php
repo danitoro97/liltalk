@@ -54,4 +54,5 @@ return [
     'Buscar sala automaticamente' => '',
     'Buscar sala manualmente' => '',
     'Mis salas' => '',
+    'Ultimas salas' => '',
 ];
