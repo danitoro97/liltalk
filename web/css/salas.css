@@ -1,6 +1,6 @@
 #mensajes {
-    height: 400px;
-    overflow-x: scroll;
+    height: 450px;
+    overflow: auto;
 }
 
 #mensajes > div {
@@ -11,4 +11,24 @@
     width: 90%;
 }
 
+.chat {
+    border: 2px solid blue;
+    padding: 10px;
+}
+
+.numero {
+    border: 2px solid black;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.numero + div {
+    padding-top: 10px;
+}
+
+
+#area-mensaje {
+    width: 91%;
+    border-radius: 7px;
+}
 /*Queda adaptar el #mensajes segun la pantalla */

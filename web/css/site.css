@@ -145,6 +145,10 @@ nav > .container > div:last-child > ul > li:last-child {
     float: right;
 }
 
+.navbar-fixed-top {
+     box-shadow: 2px 2px 5px #999;
+}
+
 .navbar-header a {
     color:black ;
     font-size: 2em;
@@ -181,26 +185,25 @@ textarea {
 }
 
 #mensajes {
-    border: 3px solid black;
+    border-left: 3px solid black;
+    border-top: 3px solid black;
+    border-right: 3px solid black;
     background-image: url('fondo-claro.jpg');
 }
 
 
-.index-sala {
+.index-salas {
     border: 2px solid #BEEBF7 ;
     border-radius: 10px;
     padding: 10px;
+    text-align: center;
 }
 
-.index-salas a {
-    border: 1px solid grey;
-    padding: 2%;
-    border-radius: 10px;
-}
 #mensajes p {
     display:inline-block;
     padding: 1%;
     font-weight: bold;
+    border-radius: 10px;
 }
 .mensaje-propio p {
     text-align: right;

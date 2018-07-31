@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Salas;
 use app\models\Participantes;
+use app\models\SalasDisponibles;
 
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -68,6 +69,8 @@ class SiteController extends Controller
             'model' => Participantes::find()
                         ->where(['usuario_id' => Yii::$app->user->identity->id])
                         ->all(),
+            'salas' => SalasDisponibles::find()
+            ->limit(5)->all(),
         ]);
     }
 
