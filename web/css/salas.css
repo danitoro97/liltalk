@@ -3,6 +3,10 @@
     overflow: auto;
 }
 
+audio {
+    display: none !important;
+}
+
 #mensajes > div {
     margin-bottom: 10px;
     margin-top: 10px;

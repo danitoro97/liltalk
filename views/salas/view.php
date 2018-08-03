@@ -59,11 +59,15 @@ setInterval(function()
         url:'$nuevosMensajes',
         type:'get',
         data: {
-            id: $('#mensajes').find('div').last().attr('data-id'),
+            id: id,
             sala_id: '$model->id'
         },
         success: function(data){
-            $('#mensajes').append(data);
+            if (data != '') {
+                $('#mensajes').append(data);
+                audio.play();
+            }
+
         }
     })
 }, 1000);
@@ -86,13 +90,18 @@ $('.participante > div a').on('click', function (evt) {
         }
     })
 });
-
+var audio = document.getElementById('audio');
 EOT;
 $this->registerJs($js);
 $this->registerCssFile('@web/css/salas.css');
 ?>
 <div class="salas-view">
-
+    <audio controls id="audio">
+        <source src="notificacion.ogg" type="audio/ogg">
+        <source src="notificacion.mp3" type="audio/mpeg">
+        <source src="notificacion.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
     <h1><?= Html::encode($this->title) ?> : <?=Yii::t('app', $model->categoria->nombre)?></h1>
     <div class="container">
         <div class="row">
