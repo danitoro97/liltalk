@@ -1,38 +1,52 @@
-#mensajes {
-    height: 450px;
-    overflow: auto;
-}
-
 audio {
     display: none !important;
 }
 
-#mensajes > div {
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-.boton input{
-    width: 90%;
-}
+/*Queda adaptar el #mensajes segun la pantalla */
 
-.chat {
-    border: 2px solid blue;
-    padding: 10px;
-}
-
-.numero {
+.p {
+    position: relative;
+    border-radius: 10px 0px 0px 10px;
     border: 2px solid black;
-    text-align: center;
-    padding-bottom: 10px;
+
 }
 
-.numero + div {
+.absoluto {
+    position: absolute;
+    left: 0px;
+    background-color: #96BDC9;
+    border-radius: 10px 0px 0px 10px;
+
+    width: 200px;
+    height: 450px;
     padding-top: 10px;
 }
 
-
-#area-mensaje {
-    width: 91%;
-    border-radius: 7px;
+.derecha {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 200px;
+    border-radius: 10px;
+    padding-top: 10px;
 }
-/*Queda adaptar el #mensajes segun la pantalla */
+
+.enviar {
+    margin-left: 200px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+
+    background-color: #BEEBF7;
+    height: 50px;
+}
+
+.enviar input {
+    width: 90%;
+    border-radius: 10px;
+
+}
+
+.derecha div {
+    margin-left: 10px;
+}
