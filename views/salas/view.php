@@ -39,7 +39,7 @@ function mensajes (evt) {
                 if (data) {
                     input.val(null);
                 } else {
-                    $('#mensajes').append('<p>Error</p>');
+                    $('.derecha').append('<p>Error</p>');
                 }
 
             }
@@ -51,7 +51,7 @@ function mensajes (evt) {
 
 setInterval(function()
 {
-    var id = $('#mensajes').find('div').last().attr('data-id');
+    var id = $('.derecha').find('div').last().attr('data-id');
     if (id == undefined) {
         id = 0;
     }
@@ -64,7 +64,7 @@ setInterval(function()
         },
         success: function(data){
             if (data != '') {
-                $('#mensajes').append(data);
+                $('.derecha').append(data);
                 audio.play();
             }
 
@@ -106,9 +106,9 @@ $this->registerCssFile('@web/css/salas.css');
     <h1><?= Html::encode($this->title) ?> : <?=Yii::t('app', $model->categoria->nombre)?></h1>
 <div class="p">
         <div class="absoluto">
-
             <div class="numero">
                     <h3><?=$model->getParticipantes()->count()?>/<?=Html::encode($model->numero_participantes)?> participantes</h3>
+                     <hr>
                     <?php if ($model->creador_id == Yii::$app->user->identity->id) :?>
                             <?=Html::a(Yii::t('app', 'Eliminar sala'), ['salas/delete', 'id' => $model->id], [
                                 'class' => 'btn btn-sm btn-danger',

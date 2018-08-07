@@ -42,11 +42,22 @@ audio {
 }
 
 .enviar input {
-    width: 90%;
-    border-radius: 10px;
-
+    width: 95%;
+    border-radius: 5px;
 }
 
 .derecha div {
     margin-left: 10px;
+}
+
+.numero p {
+    font-weight: bold;
+}
+
+.numero {
+    text-align: center;
+}
+
+.numero div {
+    padding-top: 10px;
 }
