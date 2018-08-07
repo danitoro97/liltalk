@@ -55,4 +55,5 @@ return [
     'Buscar sala manualmente' => '',
     'Mis salas' => '',
     'Ultimas salas' => '',
+    'Zona Horaria' => '',
 ];

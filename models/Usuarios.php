@@ -48,7 +48,7 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     public function rules()
     {
         return [
-            [['nombre', 'email','biografia'], 'required'],
+            [['nombre', 'email','biografia','zona_horaria'], 'required'],
             [['password_repeat', 'password'], 'required', 'on' => self::ESCENARIO_CREAR],
              [['password_repeat'], 'compare', 'compareAttribute' => 'password', 'on' => [self::ESCENARIO_CREAR, self::ESCENARIO_ACTUALIZAR]],
             [['nombre', 'password', 'email', 'auth_key'], 'string', 'max' => 255],
@@ -72,6 +72,7 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
             'email' => Yii::t('app', 'Correo electronico'),
             'password_repeat' => Yii::t('app', 'Repetir contraseña'),
             'biografia' => Yii::t('app', 'Biografia'),
+            'zona_horaria' => Yii::t('app', 'Zona Horaria'),
         ];
     }
 
