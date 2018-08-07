@@ -184,14 +184,6 @@ textarea {
     border-radius: 10px !important;
 }
 
-#mensajes {
-    border-left: 3px solid black;
-    border-top: 3px solid black;
-    border-right: 3px solid black;
-    background-image: url('fondo-claro.jpg');
-}
-
-
 .index-salas {
     border: 2px solid #BEEBF7 ;
     border-radius: 10px;
@@ -199,7 +191,7 @@ textarea {
     text-align: center;
 }
 
-#mensajes p {
+.derecha p {
     display:inline-block;
     padding: 1%;
     font-weight: bold;
@@ -207,8 +199,10 @@ textarea {
 }
 .mensaje-propio p {
     text-align: right;
-    float:right;
+}
 
+.mensaje-propio {
+    margin-right: -10px;
 }
 
 /*
