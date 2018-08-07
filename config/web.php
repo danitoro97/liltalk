@@ -9,6 +9,7 @@ $config = [
         $array = ['en-US','es-ES'];
         if (isset($_COOKIE['language']) && in_array($_COOKIE['language'], $array)) {
             \Yii::$app->language = $_COOKIE['language'];
+            Yii::$app->timeZone = Yii::$app->user->identity->zona_horaria;
         }
     },
     'id' => 'basic',
@@ -20,7 +21,7 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'sourceLanguage' => 'es-ES',
-    
+    /*'timeZone' => 'Europe/Madrid',*/
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

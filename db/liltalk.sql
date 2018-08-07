@@ -13,7 +13,8 @@ CREATE TABLE usuarios
     email varchar(255) not null unique,
     auth_key varchar(255) unique,
     token_val varchar(255) unique,
-    biografia text
+    biografia text,
+    zona_horaria varchar(255) default 'Europe/Madrid'
 );
 
 INSERT INTO usuarios (nombre,password,email)
@@ -118,8 +119,8 @@ CREATE TABLE mensajes
                                         on delete CASCADE
                                         on update CASCADE,
     mensaje varchar(255) not null,
-    created_at TIMESTAMP(0),
-    updated_at TIMESTAMP(0)
+    created_at TIMESTAMP WITH TIME ZONE ,
+    updated_at TIMESTAMP WITH TIME ZONE
 );
 
 INSERT INTO mensajes (sala_id,usuario_id,mensaje)
