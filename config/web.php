@@ -9,6 +9,9 @@ $config = [
         $array = ['en-US','es-ES'];
         if (isset($_COOKIE['language']) && in_array($_COOKIE['language'], $array)) {
             \Yii::$app->language = $_COOKIE['language'];
+        }
+
+        if (!Yii::$app->user->isGuest) {
             Yii::$app->timeZone = Yii::$app->user->identity->zona_horaria;
         }
     },

@@ -156,7 +156,7 @@ nav > .container > div:last-child > ul > li:last-child {
 
 .navbar-nav a {
     color:black ;
-    margin-left: 10px;
+    
 }
 
 .navbar-nav .active a, .navbar-nav a:hover, .navbar-nav a:focus{
@@ -165,7 +165,7 @@ nav > .container > div:last-child > ul > li:last-child {
 }
 
 .navbar-nav a {
-    border-radius: 100px;
+    border-radius: 10px;
 }
 
 .selected {
