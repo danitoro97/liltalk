@@ -136,7 +136,8 @@ $this->registerCssFile('@web/css/salas.css');
         <div class="derecha">
 
                 <?php if (isset($model->mensajes) && $model->mensajes != null): ?>
-                    <?php foreach ($model->getMensajes()->orderBy('created_at ASC')->limit(20)->all() as $mensaje) : ?>
+
+                    <?php foreach (array_reverse($model->getMensajes()->orderBy('created_at DESC')->limit(20)->all()) as $mensaje) : ?>
                         <?= $this->render('_mensajes', ['model' => $mensaje]) ?>
                     <?php endforeach ?>
                 <?php endif;?>
