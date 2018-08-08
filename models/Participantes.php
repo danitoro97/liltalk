@@ -67,7 +67,11 @@ class Participantes extends \yii\db\ActiveRecord
         return $this->hasOne(Usuarios::className(), ['id' => 'usuario_id'])->inverseOf('participantes');
     }
 
-
+    /**
+     * Asigna un color para cada insert de participante
+     * @param  [type] $insert [description]
+     * @return [type]         [description]
+     */
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
@@ -75,5 +79,20 @@ class Participantes extends \yii\db\ActiveRecord
             return true;
         }
         return false;
+    }
+
+    /**
+     * Borra los mensajes del participante
+     * @return [type] [description]
+     */
+    public function afterDelete()
+    {
+        $mensajes = Mensajes::find()
+        ->where(['usuario_id' => $this->usuario_id])
+        ->andWhere(['sala_id' => $this->sala_id]);
+
+        foreach ($mensajes as $model) {
+            $model->delete();
+        }
     }
 }
