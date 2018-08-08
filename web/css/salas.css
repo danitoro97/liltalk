@@ -16,7 +16,6 @@ audio {
     left: 0px;
     background-color: #96BDC9;
     border-radius: 10px 0px 0px 10px;
-
     width: 200px;
     height: 450px;
     padding-top: 10px;
@@ -29,6 +28,8 @@ audio {
     margin-left: 200px;
     border-radius: 10px;
     padding-top: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .enviar {
@@ -48,6 +49,7 @@ audio {
 
 .derecha div {
     margin-left: 10px;
+
 }
 
 .numero p {
@@ -60,4 +62,9 @@ audio {
 
 .numero div {
     padding-top: 10px;
+}
+
+.mensaje-propio {
+     align-self: flex-end;
+     margin-right: 10px;
 }

@@ -72,7 +72,7 @@ setInterval(function()
     })
 }, 1000);
 
-$('.participante > div a').on('click', function (evt) {
+$('.absoluto > div a').on('click', function (evt) {
     evt.preventDefault();
     var usuario = $(this).attr('data-usuario');
     var padre = $(this).parent();
