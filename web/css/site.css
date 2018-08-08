@@ -137,7 +137,7 @@ nav ul {
     width: 90%;
 }
 
-nav .container div:last-child {
+nav .container  {
     margin-top: 5px;
 }
 
@@ -156,7 +156,7 @@ nav > .container > div:last-child > ul > li:last-child {
 
 .navbar-nav a {
     color:black ;
-    
+
 }
 
 .navbar-nav .active a, .navbar-nav a:hover, .navbar-nav a:focus{
