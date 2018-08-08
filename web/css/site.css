@@ -128,7 +128,7 @@ nav {
 
 .navbar-header {
     padding-right: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
 }
 
 nav ul {
@@ -138,7 +138,7 @@ nav ul {
 }
 
 nav .container  {
-    margin-top: 5px;
+    margin-top: 7px;
 }
 
 nav > .container > div:last-child > ul > li:last-child {
