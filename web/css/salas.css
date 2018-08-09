@@ -67,4 +67,12 @@ audio {
 .mensaje-propio {
      align-self: flex-end;
      margin-right: 10px;
+     height:100%;
+
+}
+
+.mensaje-propio p {
+    /*text-align: center;*/
+    margin-right: 10px;
+    width: 100%;
 }
