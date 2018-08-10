@@ -64,6 +64,7 @@ setInterval(function()
         },
         success: function(data){
             if (data != '') {
+                ponerMensajeNuevo();
                 $('.derecha').append(data);
                 audio.play();
             }
@@ -91,6 +92,46 @@ $('.absoluto > div a').on('click', function (evt) {
     })
 });
 var audio = document.getElementById('audio');
+
+function ponerMensajeNuevo()
+{
+    if ($('#mensaje-nuevo').length == 0) {
+        var div = $('<div>');
+        div.attr('id', 'mensaje-nuevo');
+        div.attr('class', 'mensaje-nuevo');
+        var p = $('<p>');
+
+        if (Cookies.get('language') == 'en-US') {
+            texto = 'News Messages';
+        }
+        else {
+            texto = 'Nuevos Mensajes';
+        }
+        p.text(texto);
+        div.append(p)
+        $('.derecha').append(div);
+        div.mouseover(quitarMensajeNuevo);
+    }
+
+    $('title').text('Liltalk('+ ($('.derecha > div').length - $('#mensaje-nuevo').index()) + ')')
+}
+
+function quitarMensajeNuevo()
+{
+    $('#mensaje-nuevo').fadeTo( "slow", 0, function(){
+        $('#mensaje-nuevo').detach();
+    });
+
+    $('title').text('LilTalk');
+
+}
+
+$('.derecha').scroll(function (e) {
+    if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+            quitarMensajeNuevo();
+    }
+})
+
 EOT;
 $this->registerJs($js);
 $this->registerCssFile('@web/css/salas.css');
