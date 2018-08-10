@@ -99,11 +99,21 @@ function ponerMensajeNuevo()
         var div = $('<div>');
         div.attr('id', 'mensaje-nuevo');
         div.attr('class', 'mensaje-nuevo');
-        div.append('<p>Mensaje Nuevo</p>')
+        var p = $('<p>');
+
+        if (Cookies.get('language') == 'en-US') {
+            texto = 'News Messages';
+        }
+        else {
+            texto = 'Nuevos Mensajes';
+        }
+        p.text(texto);
+        div.append(p)
         $('.derecha').append(div);
         div.mouseover(quitarMensajeNuevo);
-
     }
+
+    $('title').text('Liltalk('+ ($('.derecha > div').length - $('#mensaje-nuevo').index()) + ')')
 }
 
 function quitarMensajeNuevo()
@@ -111,6 +121,8 @@ function quitarMensajeNuevo()
     $('#mensaje-nuevo').fadeTo( "slow", 0, function(){
         $('#mensaje-nuevo').detach();
     });
+
+    $('title').text('LilTalk');
 
 }
 
