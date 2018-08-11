@@ -38,6 +38,7 @@ function mensajes (evt) {
             success : function (data) {
                 if (data) {
                     input.val(null);
+                    $('.derecha').append(data);
                 } else {
                     $('.derecha').append('<p>Error</p>');
                 }
@@ -125,6 +126,10 @@ function quitarMensajeNuevo()
     $('title').text('LilTalk');
 
 }
+
+$('#area-mensaje').focus(function(){
+    quitarMensajeNuevo();
+})
 
 $('.derecha').scroll(function (e) {
     if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {

@@ -41,16 +41,21 @@ class MensajesController extends \yii\web\Controller
     {
         if (Yii::$app->request->isAjax && Yii::$app->request->isPost) {
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
-            $model = new Mensajes(
-                [
-                    'usuario_id' => Yii::$app->user->identity->id,
-                    'sala_id' => Yii::$app->request->post('sala_id'),
-                    'mensaje' => Yii::$app->request->post('mensaje'),
-
-                ]
-            );
-            return $model->save();
+            $sala = Yii::$app->request->post('sala_id');
+            if ($this->isParticipante($sala)) {
+                $model = new Mensajes(
+                    [
+                      'usuario_id' => Yii::$app->user->identity->id,
+                      'sala_id' => $sala,
+                      'mensaje' => Yii::$app->request->post('mensaje'),
+                    ]
+                );
+                if ($model->save()) {
+                    $model->refresh();
+                    return $this->renderPartial('/salas/_mensajes', ['model' => $model]);
+                }
+            }
+            return false;
         }
     }
 
@@ -66,6 +71,7 @@ class MensajesController extends \yii\web\Controller
             $mensajes = Mensajes::find()
             ->where(['>','id', $id])
             ->andWhere(['sala_id' => $sala_id])
+            ->andWhere(['!=','usuario_id', Yii::$app->user->identity->id])
             ->all();
             $html = '';
             foreach ($mensajes as $mensaje) {
