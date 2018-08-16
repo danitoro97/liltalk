@@ -49,10 +49,14 @@ AppAsset::register($this);
         ],
     ]);
     $item = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => Yii::t('app', 'Buscar sala automaticamente'), 'url' => ['/salas/buscar']],
-        ['label' => Yii::t('app', 'Buscar sala manualmente'), 'url' => ['/salas/index']],
-        ['label' => Yii::t('app', 'Crear sala'), 'url' => ['/salas/create']],
+        [
+            'label' => 'Home',
+            'url' => ['/site/index'],
+            'linkOptions' => ['accesskey' => 'h'],
+        ],
+        ['label' => Yii::t('app', 'Buscar sala automaticamente'), 'url' => ['/salas/buscar'], 'linkOptions' => ['accesskey' => 'a'],],
+        ['label' => Yii::t('app', 'Buscar sala manualmente'), 'url' => ['/salas/index'],'linkOptions' => ['accesskey' => 'l'],],
+        ['label' => Yii::t('app', 'Crear sala'), 'url' => ['/salas/create'], 'linkOptions' => ['accesskey' => 'c'],],
 
    ];
 
@@ -99,7 +103,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; LilTalk <?= date('Y') ?></p>
-
+        <p class="pull-right"><?= Html::a(Yii::t('app', 'Atajos de teclado'), ['site/atajos'])?></p>
         <a href="#"><span class="flag-icon flag-icon-es<?=(Yii::$app->language == 'es-ES' ? ' selected' : null)?>" data-value='es-ES'></span></a>
         <a href="#"><span class="flag-icon flag-icon-us<?=(Yii::$app->language == 'en-US' ? ' selected' : null)?>" data-value='en-US'></span></a>
 

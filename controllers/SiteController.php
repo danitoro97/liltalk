@@ -75,6 +75,15 @@ class SiteController extends Controller
     }
 
     /**
+     * Muestro los accesskey
+     * @return [type] [description]
+     */
+    public function actionAtajos()
+    {
+        return $this->render('atajos');
+    }
+
+    /**
      * Login action.
      *
      * @return Response|string

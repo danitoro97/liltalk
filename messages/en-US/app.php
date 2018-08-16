@@ -56,4 +56,13 @@ return [
     'Mis salas' => '',
     'Ultimas salas' => '',
     'Zona Horaria' => '',
+    'Navegador' => '',
+    'Clave acceso' => 'Accesskey',
+    'Cada clave acceso depende del navegador y del sistema operativo' => '',
+    'Accion' => 'Action',
+    'Ir a inicio' => 'Go Home',
+    'Busquedad automática de sala' => '',
+    'Listado de salas disponibles' => '',
+    'Crear una sala' => '',
+    'Atajos de teclado' => '',
 ];
