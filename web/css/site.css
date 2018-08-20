@@ -198,10 +198,18 @@ textarea {
     border-radius: 10px;
 }
 
+.navbar-toggle, .navbar-toggle:hover  {
+    border-color: #086C86 !important;
+    background-color: #086C86 !important;
+}
+
+.icon-bar {
+    background-color: white !important;
+}
 
 /*
 
 white fondo
 #BEEBF7 letra
 black fondo interior
- */
+*/
