@@ -8,7 +8,6 @@ audio {
     position: relative;
     border-radius: 10px 0px 0px 10px;
     border: 2px solid black;
-
 }
 
 .absoluto {
@@ -16,7 +15,7 @@ audio {
     left: 0px;
     background-color: #96BDC9;
     border-radius: 10px 0px 0px 10px;
-    width: 200px;
+    width: 150px;
     height: 450px;
     padding-top: 10px;
 }
@@ -37,10 +36,33 @@ audio {
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
-
     background-color: #BEEBF7;
     height: 50px;
 }
+
+@media (max-width: 768px) {
+    .absoluto {
+        width: 85px;
+        background-color: red;
+    }
+
+    .derecha {
+        margin-left: 85px;
+    }
+
+    .enviar {
+        margin-left: 85px;
+    }
+
+    .numero p {
+        font-size: 13px;
+
+    }
+    .enviar input {
+        width: 80% !important;
+    }
+}
+
 
 .enviar input {
     width: 95%;
@@ -49,15 +71,19 @@ audio {
 
 .derecha div {
     margin-left: 10px;
-
 }
 
 .numero p {
     font-weight: bold;
+    text-overflow: ellipsis;
 }
 
 .numero {
     text-align: center;
+}
+
+.numero h3 {
+    width: 100px;
 }
 
 .numero div {

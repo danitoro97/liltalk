@@ -110,6 +110,21 @@ a.desc:after {
     nav ul > li:last-child {
         float: left !important;
     }
+
+    .wrap > .container {
+        margin-top: 0px !important;
+    }
+}
+
+@media(max-width:1000px) {
+
+    nav ul {
+        width: 100% !important;
+    }
+
+    .wrap > .container {
+        margin-top: 50px;
+    }
 }
 /*
 .nav > li > form > button.logout:focus,

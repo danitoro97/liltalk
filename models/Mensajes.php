@@ -38,7 +38,6 @@ class Mensajes extends \yii\db\ActiveRecord
             [['usuario_id', 'sala_id', 'mensaje'], 'required'],
             [['usuario_id', 'sala_id'], 'default', 'value' => null],
             [['usuario_id', 'sala_id'], 'integer'],
-            [['mensaje'], 'string', 'max' => 255],
             [['sala_id'], 'exist', 'skipOnError' => true, 'targetClass' => Salas::className(), 'targetAttribute' => ['sala_id' => 'id']],
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['usuario_id' => 'id']],
         ];
