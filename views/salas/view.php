@@ -190,6 +190,6 @@ $this->registerCssFile('@web/css/salas.css');
         </div>
         <div class="enviar">
             <input type="text" name="mensaje" value="" id="area-mensaje">
-            <a href="#" class="btn btn-sm btn-success" id="enviar-mensaje"><span class="glyphicon glyphicon-send"></span></a>
+            <a href="#" class="btn btn-sm" id="enviar-mensaje"><span class="glyphicon glyphicon-send"></span></a>
         </div>
 </div>

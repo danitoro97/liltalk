@@ -25,7 +25,7 @@ audio {
     height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
-    margin-left: 200px;
+    margin-left: 150px;
     border-radius: 10px;
     padding-top: 10px;
     display: flex;
@@ -120,4 +120,13 @@ audio {
 
 .mensaje-nuevo p{
     background-color: #CED8F6;
+}
+
+#enviar-mensaje {
+    border: 2px solid #086C86
+}
+
+#enviar-mensaje:hover {
+    color: black !important;
+    border-color: black !important;
 }
