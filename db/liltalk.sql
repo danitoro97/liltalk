@@ -118,7 +118,7 @@ CREATE TABLE mensajes
     sala_id bigint not null references salas(id)
                                         on delete CASCADE
                                         on update CASCADE,
-    mensaje varchar(255) not null,
+    mensaje text not null,
     created_at TIMESTAMP WITH TIME ZONE ,
     updated_at TIMESTAMP WITH TIME ZONE
 );

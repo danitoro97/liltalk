@@ -110,6 +110,21 @@ a.desc:after {
     nav ul > li:last-child {
         float: left !important;
     }
+
+    .wrap > .container {
+        margin-top: 0px !important;
+    }
+}
+
+@media(max-width:1000px) {
+
+    nav ul {
+        width: 100% !important;
+    }
+
+    .wrap > .container {
+        margin-top: 50px;
+    }
 }
 /*
 .nav > li > form > button.logout:focus,
@@ -159,13 +174,27 @@ nav > .container > div:last-child > ul > li:last-child {
 
 }
 
-.navbar-nav .active a, .navbar-nav a:hover, .navbar-nav a:focus{
+.navbar-nav .active a,.navbar-nav a:focus {
     background-color: #086C86 !important;
     color: white !important;
+
 }
+
+.navbar-nav {
+    font-weight: bold ;
+}
+
 
 .navbar-nav a {
     border-radius: 10px;
+}
+
+.navbar li {
+    margin-right: 10px;
+}
+
+.navbar li:last-child {
+    margin-right: 0px !important;
 }
 
 .selected {
@@ -189,7 +218,11 @@ textarea {
     border-radius: 10px;
     padding: 10px;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 
 .derecha p {
     display:inline-block;
@@ -206,7 +239,6 @@ textarea {
 .icon-bar {
     background-color: white !important;
 }
-
 /*
 
 white fondo

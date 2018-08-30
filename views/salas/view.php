@@ -153,19 +153,19 @@ $this->registerCssFile('@web/css/salas.css');
 <div class="p">
         <div class="absoluto">
             <div class="numero">
-                    <h3><?=$model->getParticipantes()->count()?>/<?=Html::encode($model->numero_participantes)?> participantes</h3>
+                    <p><?=$model->getParticipantes()->count()?>/<?=Html::encode($model->numero_participantes)?> participantes</p>
                      <hr>
                     <?php if ($model->creador_id == Yii::$app->user->identity->id) :?>
                             <?=Html::a(Yii::t('app', 'Eliminar sala'), ['salas/delete', 'id' => $model->id], [
-                                'class' => 'btn btn-sm btn-danger',
+                                'class' => 'btn-danger',
                                 'data' => [
                                    'confirm' => Yii::t('app', '¿Estas seguro que deseas eliminar esta sala ?'),
                                    'method' => 'post',
                                ]
                             ])?>
                     <?php else : ?>
-                            <?=Html::a(Yii::t('app', 'Abandonar sala'), ['salas/abandonar', 'sala_id' => $model->id], [
-                                'class' => 'btn btn-sm btn-danger',
+                            <?=Html::a(Yii::t('app', 'Abandonar'), ['salas/abandonar', 'sala_id' => $model->id], [
+                                'class' => 'btn-danger',
                                 'data' => [
                                    'confirm' => Yii::t('app', '¿Estas seguro que deseas abandonar esta sala ?'),
                                    'method' => 'post',
