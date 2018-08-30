@@ -223,11 +223,6 @@ textarea {
     text-overflow: ellipsis;
 }
 
-div {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 
 .derecha p {
     display:inline-block;
