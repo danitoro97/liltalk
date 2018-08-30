@@ -174,13 +174,27 @@ nav > .container > div:last-child > ul > li:last-child {
 
 }
 
-.navbar-nav .active a, .navbar-nav a:hover, .navbar-nav a:focus{
+.navbar-nav .active a,.navbar-nav a:focus {
     background-color: #086C86 !important;
     color: white !important;
+
 }
+
+.navbar-nav {
+    font-weight: bold ;
+}
+
 
 .navbar-nav a {
     border-radius: 10px;
+}
+
+.navbar li {
+    margin-right: 10px;
+}
+
+.navbar li:last-child {
+    margin-right: 0px !important;
 }
 
 .selected {
@@ -204,6 +218,15 @@ textarea {
     border-radius: 10px;
     padding: 10px;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .derecha p {
@@ -221,7 +244,6 @@ textarea {
 .icon-bar {
     background-color: white !important;
 }
-
 /*
 
 white fondo
