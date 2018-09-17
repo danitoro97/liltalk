@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </tr>
                 <tr>
                     <td>a</td>
-                    <td><?=Yii::t('app', 'Busquedad automática de sala')?></td>
+                    <td><?=Yii::t('app', 'Buscar sala automaticamente')?></td>
                 </tr>
                 <tr>
                     <td>l</td>

@@ -19,7 +19,7 @@ $this->title = 'My Yii Application';
                 <?php endif;?>
         </div>
         <div class="row">
-            <h2><?=Yii::t('app', 'Ultimas salas') ?></h2>
+            <h2><?=Yii::t('app', 'Salas recientes') ?></h2>
                 <?php if ($salas != null) : ?>
                     <?php foreach ($salas as $sala) : ?>
                         <?= $this->render('_salasDisponibles', ['model' => $sala->salas]) ?>

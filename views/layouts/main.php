@@ -56,7 +56,7 @@ AppAsset::register($this);
         ],
         ['label' => Yii::t('app', 'Buscar sala automaticamente'), 'url' => ['/salas/buscar'], 'linkOptions' => ['accesskey' => 'a'],],
         ['label' => Yii::t('app', 'Buscar sala manualmente'), 'url' => ['/salas/index'],'linkOptions' => ['accesskey' => 'l'],],
-        ['label' => Yii::t('app', 'Crear sala'), 'url' => ['/salas/create'], 'linkOptions' => ['accesskey' => 'c'],],
+        ['label' => Yii::t('app', 'Crear una sala'), 'url' => ['/salas/create'], 'linkOptions' => ['accesskey' => 'c'],],
 
    ];
 

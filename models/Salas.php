@@ -65,7 +65,7 @@ class Salas extends \yii\db\ActiveRecord
             'descripcion' => Yii::t('app', 'Descripcion'),
             'categoria_id' => Yii::t('app', 'Tema'),
             'categoria.nombre' => Yii::t('app', 'Tema'),
-            'numero_participantes' => Yii::t('app', 'Numero Participantes'),
+            'numero_participantes' => Yii::t('app', 'Numero de participantes'),
             'privada' => Yii::t('app', 'Privada'),
             'created_at' => 'Created At',
         ];

@@ -8,7 +8,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Salas */
 
 $this->title = $model->nombre;
-$this->params['breadcrumbs'][] = ['label' => 'Salas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app','Salas'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $ruta = Url::to(['mensajes/crear']);
@@ -153,7 +153,7 @@ $this->registerCssFile('@web/css/salas.css');
 <div class="p">
         <div class="absoluto">
             <div class="numero">
-                    <p><?=$model->getParticipantes()->count()?>/<?=Html::encode($model->numero_participantes)?> participantes</p>
+                    <p><?=$model->getParticipantes()->count()?>/<?=Html::encode($model->numero_participantes)?> <?= Yii::t('app', 'participantes')?></p>
                      <hr>
                     <?php if ($model->creador_id == Yii::$app->user->identity->id) :?>
                             <?=Html::a(Yii::t('app', 'Eliminar sala'), ['salas/delete', 'id' => $model->id], [

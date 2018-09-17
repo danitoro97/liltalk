@@ -52,7 +52,7 @@ class SalasDisponibles extends \yii\db\ActiveRecord
             'nombre' => Yii::t('app', 'Nombre de la Sala'),
             'descripcion' => Yii::t('app', 'Descripcion'),
             'categoria_id' => 'Categoria ID',
-            'numero_participantes' => 'Numero Participantes',
+            'numero_participantes' => 'Numero de participantes',
         ];
     }
 
