@@ -27,7 +27,5 @@ $this->title = 'My Yii Application';
                 <?php endif;?>
         </div>
     </div>
-    <h1>Web en construccion </h1>
-    <?=Html::a('Buscar Salas automaticamente', ['salas/buscar'], ['class' => 'index-salas']) ?>
-    <?=Html::a('Buscar Salas manualmente', ['salas/index'], ['class' => 'index-salas']) ?>
+    
 </div>

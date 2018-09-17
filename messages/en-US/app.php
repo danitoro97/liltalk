@@ -38,7 +38,7 @@ return [
     'participantes' => 'members',
     'Privada' => 'Private',
     'Salas' => 'Rooms',
-    'Musica' => 'Música',
+    'Musica' => 'Musics',
     'Politica' => 'Politics',
     'Ciencia' => 'Science',
     'Otros'=> 'Others',
