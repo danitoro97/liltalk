@@ -156,10 +156,21 @@ nav .container  {
     margin-top: 7px;
 }
 
-nav > .container > div:last-child > ul > li:last-child {
-    float: right;
+nav > .container > div:last-child  > ul > li:nth-child(5) {
+    float:right;
+
 }
 
+nav > .container > div:last-child > ul > li:last-child {
+    float: right;
+
+}
+nav > .container > div:last-child > ul > li:last-child > a {
+    height: 50px;
+    padding-top: 12px;
+
+
+}
 .navbar-fixed-top {
      box-shadow: 2px 2px 5px #999;
 }

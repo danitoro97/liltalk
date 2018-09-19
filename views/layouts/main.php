@@ -63,8 +63,9 @@ AppAsset::register($this);
    if (Yii::$app->user->isGuest) {
        $item[] = ['label' => Yii::t('app', 'Iniciar sesión') , 'url' => ['/site/login']];
    }  else {
+
        $item[] = [
-          'label' => Yii::t('app', 'Usuarios') . '(' . Yii::$app->user->identity->nombre . ')',
+          'label' =>Yii::t('app', 'Usuarios') . '(' . Yii::$app->user->identity->nombre . ')',
           'items' => [
               ['label' => Yii::t('app', 'Mi perfil'), 'url' => ['usuario/view', 'id' => Yii::$app->user->identity->id]],
               '<li class="divider"></li>',
@@ -83,10 +84,13 @@ AppAsset::register($this);
               ],
           ]
       ];
+      $item[] = ['label' =>Yii::$app->user->identity->icono];
+
    }
    echo Nav::widget([
        'options' => ['class' => 'navbar-nav navbar-right'],
        'items' =>$item ,
+       'encodeLabels' => false,
    ]);
    NavBar::end();
     ?>

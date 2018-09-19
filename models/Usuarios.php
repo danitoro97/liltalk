@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\Url;
+use yii\helpers\Html;
 use yii\web\IdentityInterface;
 use Spatie\Dropbox\Exceptions\BadRequest;
 use yii\imagine\Image;
@@ -247,8 +248,8 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         $filepath = 'uploads/' . $id . '.' . $this->imageFile->extension;
 
         $this->imageFile->saveAs($filepath);
-        Image::thumbnail($filepath, 100, 100)
-                ->resize(new Box(100, 100))
+        Image::thumbnail($filepath, 30, 30)
+                ->resize(new Box(30, 30))
                 ->save($filepath,['quality' => 100]);
 
         $client = new \Spatie\Dropbox\Client(getenv('DROPBOX'));
@@ -266,5 +267,14 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         $this->url = $res['url'];
 
         return $res['url'];
+    }
+
+    public function getIcono()
+    {
+        $ruta = 'icon.png';
+        if ($this->url !== null) {
+            $ruta = $this->url;
+        }
+        return Html::img($ruta, ['class' => 'img-responsive img-circle']);
     }
 }
