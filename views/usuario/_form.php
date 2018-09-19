@@ -251,6 +251,7 @@ asort($data,SORT_STRING);
     ]); ?>
 
     <?= $form->field($model, 'biografia')->textarea() ?>
+    <?= $form->field($model, 'imageFile')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-success']) ?>
