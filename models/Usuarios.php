@@ -4,7 +4,11 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\Url;
+use yii\helpers\Html;
 use yii\web\IdentityInterface;
+use Spatie\Dropbox\Exceptions\BadRequest;
+use yii\imagine\Image;
+use Imagine\Image\Box;
 
 /**
  * This is the model class for table "usuarios".
@@ -35,6 +39,11 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     public const ESCENARIO_ACTUALIZAR = 'actualizar';
 
     /**
+     * @var UploadedFile
+     */
+    public $imageFile;
+
+    /**
      * {@inheritdoc}
      */
     public static function tableName()
@@ -52,11 +61,12 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
             [['password_repeat', 'password'], 'required', 'on' => self::ESCENARIO_CREAR],
              [['password_repeat'], 'compare', 'compareAttribute' => 'password', 'on' => [self::ESCENARIO_CREAR, self::ESCENARIO_ACTUALIZAR]],
             [['nombre', 'password', 'email', 'auth_key'], 'string', 'max' => 255],
-            [['biografia'],'safe'],
+            [['biografia','url'],'safe'],
             [['auth_key'], 'unique'],
             [['email'],'email'],
             [['email'], 'unique'],
             [['nombre'], 'unique'],
+            [['imageFile'], 'file', 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -229,5 +239,42 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
               ->setSubject('Correo de confirmacion de LilTalk')
               ->setTextBody('Hola, bienvenido a LilTalk ' . $enlace . ' Gracias,LilTalk')
               ->send();
+    }
+
+    public function upload()
+    {
+
+        $id = $this->id;
+        $filepath = 'uploads/' . $id . '.' . $this->imageFile->extension;
+
+        $this->imageFile->saveAs($filepath);
+        Image::thumbnail($filepath, 30, 30)
+                ->resize(new Box(30, 30))
+                ->save($filepath,['quality' => 100]);
+
+        $client = new \Spatie\Dropbox\Client(getenv('DROPBOX'));
+
+        try {
+            $client->delete($filepath);
+        } catch (BadRequest $e) {
+            // No se hace nada
+        }
+        $client->upload($filepath, file_get_contents($filepath, 'overwrite'));
+        $res = $client->createSharedLinkWithSettings($filepath, [
+            'requested_visibility' => 'public',
+        ]);
+        $res['url'][mb_strlen($res['url']) - 1] = '1';
+        $this->url = $res['url'];
+
+        return $res['url'];
+    }
+
+    public function getIcono()
+    {
+        $ruta = 'icon.png';
+        if ($this->url !== null) {
+            $ruta = $this->url;
+        }
+        return Html::img($ruta, ['class' => 'img-responsive img-circle']);
     }
 }

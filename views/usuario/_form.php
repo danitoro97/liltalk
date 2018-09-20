@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\widgets\Select2;
+use app\models\Usuarios;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Usuarios */
@@ -244,13 +245,16 @@ asort($data,SORT_STRING);
 
     <?= $form->field($model, 'zona_horaria')->widget(Select2::classname(), [
         'data' => $data,
-        'options' => ['placeholder' => 'Select a state ...' ],
+        'options' => ['placeholder' => Yii::t('app','Selecciona una zona ...')],
         'pluginOptions' => [
             'allowClear' => true
         ],
     ]); ?>
 
     <?= $form->field($model, 'biografia')->textarea() ?>
+    <?php if ($model->scenario == Usuarios::ESCENARIO_ACTUALIZAR ): ?>
+        <?= $form->field($model, 'imageFile')->fileInput() ?>
+    <?php endif ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-success']) ?>

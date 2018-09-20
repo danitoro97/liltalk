@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\web\UploadedFile;
 
 /**
  * UsuarioController implements the CRUD actions for Usuarios model.
@@ -66,6 +67,7 @@ class UsuarioController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout = 'login';
         $model = new Usuarios();
         $model->scenario = Usuarios::ESCENARIO_CREAR;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -114,7 +116,15 @@ class UsuarioController extends Controller
         $model = Yii::$app->user->identity;
         $model->password = '';
         $model->scenario = Usuarios::ESCENARIO_ACTUALIZAR;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+
+            if ($model->imageFile != null) {
+                 $model->upload();
+            }
+            $model->imageFile = null;
+
+            $model->save();
             return $this->goHome();
         }
 

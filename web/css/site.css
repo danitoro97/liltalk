@@ -156,10 +156,20 @@ nav .container  {
     margin-top: 7px;
 }
 
-nav > .container > div:last-child > ul > li:last-child {
-    float: right;
+nav > .container > div:last-child  > ul > li:nth-child(5) {
+    float:right;
+    margin-right: 0px !important;
 }
 
+nav > .container > div:last-child > ul > li:last-child {
+    float: right;
+
+}
+nav > .container > div:last-child > ul > li:last-child > a {
+    height: 50px;
+    padding-top: 12px;
+
+}
 .navbar-fixed-top {
      box-shadow: 2px 2px 5px #999;
 }
@@ -189,8 +199,12 @@ nav > .container > div:last-child > ul > li:last-child {
     border-radius: 10px;
 }
 
-.navbar li {
+.navbar-nav > li {
     margin-right: 10px;
+}
+
+.dropdown-menu li a {
+    border-radius: 0 !important;
 }
 
 .navbar li:last-child {

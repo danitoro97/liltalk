@@ -14,7 +14,8 @@ CREATE TABLE usuarios
     auth_key varchar(255) unique,
     token_val varchar(255) unique,
     biografia text,
-    zona_horaria varchar(255) default 'Europe/Madrid'
+    zona_horaria varchar(255) default 'Europe/Madrid',
+    url varchar(255)
 );
 
 INSERT INTO usuarios (nombre,password,email)
