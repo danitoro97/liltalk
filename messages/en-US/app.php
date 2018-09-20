@@ -60,4 +60,6 @@ return [
     'Crear una sala' => 'Create a room',
     'Listado de salas disponibles' => 'List of available rooms',
     'Atajos de teclado' => 'Keyboard shortcuts',
+    'Selecciona una zona ...' => 'Select a time zone',
+    'Crear usuario' => 'Create user',
 ];

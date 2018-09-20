@@ -67,6 +67,7 @@ class UsuarioController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout = 'login';
         $model = new Usuarios();
         $model->scenario = Usuarios::ESCENARIO_CREAR;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -122,7 +123,7 @@ class UsuarioController extends Controller
                  $model->upload();
             }
             $model->imageFile = null;
-            
+
             $model->save();
             return $this->goHome();
         }

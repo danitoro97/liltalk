@@ -158,7 +158,7 @@ nav .container  {
 
 nav > .container > div:last-child  > ul > li:nth-child(5) {
     float:right;
-
+    margin-right: 0px !important;
 }
 
 nav > .container > div:last-child > ul > li:last-child {
@@ -168,7 +168,6 @@ nav > .container > div:last-child > ul > li:last-child {
 nav > .container > div:last-child > ul > li:last-child > a {
     height: 50px;
     padding-top: 12px;
-
 
 }
 .navbar-fixed-top {
@@ -200,8 +199,12 @@ nav > .container > div:last-child > ul > li:last-child > a {
     border-radius: 10px;
 }
 
-.navbar li {
+.navbar-nav > li {
     margin-right: 10px;
+}
+
+.dropdown-menu li a {
+    border-radius: 0 !important;
 }
 
 .navbar li:last-child {
