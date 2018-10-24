@@ -74,6 +74,7 @@ CREATE TABLE participantes
 INSERT INTO participantes (usuario_id,sala_id,color)
 VALUES (1,1,'#aabbcc'),(2,1,'#ff0000');
 
+
 --Vista salas disponibles --
 CREATE VIEW salas_disponibles as
     SELECT sala_id,nombre,descripcion,categoria_id,numero_participantes,salas.id,creador_id
@@ -125,4 +126,5 @@ CREATE TABLE mensajes
 );
 
 INSERT INTO mensajes (sala_id,usuario_id,mensaje)
-VALUES (1,1,'Primer mensaje');
+VALUES (1,1,'Primer mensaje'),
+        (1,2,'Segundo');

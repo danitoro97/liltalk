@@ -1,79 +1,44 @@
 audio {
     display: none !important;
 }
-
-/*Queda adaptar el #mensajes segun la pantalla */
-
-.p {
-    position: relative;
-    border-radius: 10px 0px 0px 10px;
-    border: 2px solid black;
-}
-
-.absoluto {
-    position: absolute;
-    left: 0px;
+.numero {
     background-color: #96BDC9;
     border-radius: 10px 0px 0px 10px;
-    width: 150px;
-    height: 450px;
     padding-top: 10px;
-
 }
-
-.derecha {
-    height: 400px;
+.derecha > div:first-child {
     overflow-y: auto;
-    overflow-x: hidden;
-    margin-left: 150px;
+    overflow-x: auto;
+    height: 400px;
+}
+.derecha {
     border-radius: 10px;
     padding-top: 10px;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    height: 450px;
 }
 
+.derecha > .row {
+    position: absolute;
+    bottom:0;
+    width: 100%;
+
+}
 .enviar {
-    margin-left: 150px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
     background-color: #BEEBF7;
-    height: 50px;
+    position: fixed;
+    bottom: 0;
+    margin-left: 15px;
+
 }
 
-@media (max-width: 768px) {
-    .absoluto {
-        width: 85px;
-        background-color: red;
-    }
-
-    .derecha {
-        margin-left: 85px;
-    }
-
-    .enviar {
-        margin-left: 85px;
-    }
-
-    .numero p {
-        font-size: 13px;
-
-    }
-    .enviar input {
-        width: 80% !important;
-    }
+.bot-chat {
+    margin-top: 10px;
 }
 
-
-.enviar input {
-    width: 95%;
-    padding-left: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.derecha div {
-    margin-left: 10px;
+.p {
+    border-radius: 10px 10px 10px 10px;
+    border: 2px solid black;
 }
 
 .numero p {
@@ -85,48 +50,53 @@ audio {
     text-align: center;
 
 }
-.numero div {
+.numero div , .numero p{
     white-space: nowrap;
     overflow: hidden;
 }
-
-.numero h3 {
-    width: 100px;
-}
-
-.numero div {
-    padding-top: 10px;
-}
-
-.mensaje-propio {
-     align-self: flex-end;
-     margin-right: 10px;
-    /* height:100%;*/
-
-}
-
-.mensaje-propio p {
-    /*text-align: center;*/
-    margin-right: 10px;
-    width: 100%;
-}
-
-.mensaje-nuevo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
 .mensaje-nuevo p{
     background-color: #CED8F6;
 }
+/*
+#seccion {
+    display: -webkit-flex;
+    display: flex;
+}*/
+.enviar input {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 
-#enviar-mensaje {
-    border: 2px solid #086C86
+}
+.icono, .enviar {
+    padding: 0 !important;
 }
 
-#enviar-mensaje:hover {
-    color: black !important;
-    border-color: black !important;
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .derecha > div:first-child {
+        height: 450px;
+    }
+
+    .derecha {
+        height: 500px;
+    }
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .derecha > div:first-child {
+        height: 550px;
+    }
+
+    .derecha {
+       height: 600px;
+   }
+
+}
+
+.derecha .col-xs-2 {
+    width: 10% !important;
 }
