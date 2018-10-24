@@ -1,9 +1,6 @@
 <?php
-
 namespace app\models;
-
 use Yii;
-
 /**
  * This is the model class for table "participantes".
  *
@@ -23,7 +20,6 @@ class Participantes extends \yii\db\ActiveRecord
     {
         return 'participantes';
     }
-
     /**
      * {@inheritdoc}
      */
@@ -38,7 +34,6 @@ class Participantes extends \yii\db\ActiveRecord
             [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => Usuarios::className(), 'targetAttribute' => ['usuario_id' => 'id']],
         ];
     }
-
     /**
      * {@inheritdoc}
      */
@@ -50,7 +45,6 @@ class Participantes extends \yii\db\ActiveRecord
             'sala_id' => 'Sala ID',
         ];
     }
-
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -58,7 +52,6 @@ class Participantes extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Salas::className(), ['id' => 'sala_id'])->inverseOf('participantes');
     }
-
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -66,7 +59,6 @@ class Participantes extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuarios::className(), ['id' => 'usuario_id'])->inverseOf('participantes');
     }
-
     /**
      * Asigna un color para cada insert de participante
      * @param  [type] $insert [description]
@@ -80,19 +72,18 @@ class Participantes extends \yii\db\ActiveRecord
         }
         return false;
     }
-
     /**
      * Borra los mensajes del participante
      * @return [type] [description]
      */
     public function afterDelete()
     {
-        $mensajes = Mensajes::find()
-        ->where(['usuario_id' => $this->usuario_id])
-        ->andWhere(['sala_id' => $this->sala_id]);
-
-        foreach ($mensajes as $model) {
-            $model->delete();
-        }
+        return Mensajes::deleteAll(
+            'sala_id =:sala_id AND usuario_id = :usuario_id',
+            [
+                ':sala_id' => $this->sala_id,
+                'usuario_id' => $this->usuario_id
+            ]
+        );
     }
 }
