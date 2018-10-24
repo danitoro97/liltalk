@@ -39,6 +39,9 @@ function mensajes (evt) {
                 if (data) {
                     input.val(null);
                     $('.derecha').append(data);
+                    var ob = document.getElementById("derecha");
+                    ob.scrollTop = ob.scrollHeight;
+
                 } else {
                     $('.derecha').append('<p>Error</p>');
                 }
@@ -179,7 +182,7 @@ $this->registerCssFile('@web/css/salas.css');
                     <?php endif;?>
             </div>
         </div>
-        <div class="derecha">
+        <div class="derecha" id="derecha">
 
                 <?php if (isset($model->mensajes) && $model->mensajes != null): ?>
 
