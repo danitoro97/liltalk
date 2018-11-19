@@ -52,6 +52,19 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     }
 
     /**
+     * [fields description]
+     * @return [type] [description]
+     */
+    public function fields()
+    {
+        return [
+            'id',
+            'nombre',
+            'email'
+        ];
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function rules()
