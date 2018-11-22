@@ -60,7 +60,8 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         return [
             'id',
             'nombre',
-            'email'
+            'email',
+	    'url'
         ];
     }
 
