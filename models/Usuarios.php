@@ -61,7 +61,8 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
             'id',
             'nombre',
             'email',
-	    'url'
+            'url',
+            'token_val',
         ];
     }
 

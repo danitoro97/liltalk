@@ -32,6 +32,15 @@ class Salas extends \yii\db\ActiveRecord
         return 'salas';
     }
 
+    public function fields()
+    {
+        return [
+            'id',
+            'nombre',
+            'descripcion'
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */

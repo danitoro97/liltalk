@@ -20,6 +20,17 @@ class Participantes extends \yii\db\ActiveRecord
     {
         return 'participantes';
     }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'sala_id' => function ($model) {
+                return $model->sala;
+            }
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
