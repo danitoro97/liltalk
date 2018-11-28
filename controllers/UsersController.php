@@ -15,8 +15,29 @@ class UsersController extends ActiveController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['view'], $actions['index'], $action['delete'], $action['update']);
+        unset($actions['view'], $actions['index'], $actions['delete'], $actions['update']);
         return $actions;
+    }
+
+    /**
+     * Comprueba la disponibilidad de un nombre de usuario
+     * @param  [type] $nombre [description]
+     * @return boolean         true si esta disponible false si no
+     */
+    public function actionCheckname($nombre)
+    {
+        return !Usuarios::find()->where(['nombre' => $nombre])->exists();
+    }
+
+
+    /**
+     * Comprueba la disponibilidad de un nombre de usuario
+     * @param  [type] $nombre [description]
+     * @return boolean         true si esta disponible false si no
+     */
+    public function actionCheckemail($email)
+    {
+        return !Usuarios::find()->where(['email' => $email])->exists();
     }
 
     /**

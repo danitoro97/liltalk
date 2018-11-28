@@ -28,7 +28,7 @@ class SalasapiController extends ActiveController
     public function actionMissalas($id)
     {
         return Participantes::find()
-                    ->where(['usuario_id' => $id])
+                    ->where(['usuario_id' => $id)
                     ->all();
     }
 }
