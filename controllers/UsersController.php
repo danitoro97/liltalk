@@ -30,6 +30,7 @@ class UsersController extends ActiveController
         $model->nombre = $_POST['nombre'];
         $model->email = $_POST['email'];
         $model->password = $_POST['password'];
+        $model->password_repeat = $_POST['password'];
         $model->zona_horaria = 'Europe/Madrid';
         $model->biografia = 'aa';
 
