@@ -16,7 +16,7 @@ class SalasapiController extends ActiveController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['view'], $actions['index'], $action['delete'], $action['update']);
+        unset($actions['view'], $actions['index'], $actions['delete'], $actions['update']);
         return $actions;
     }
 
@@ -28,7 +28,7 @@ class SalasapiController extends ActiveController
     public function actionMissalas($id)
     {
         return Participantes::find()
-                    ->where(['usuario_id' => $id)
+                    ->where(['usuario_id' => $id])
                     ->all();
     }
 }
