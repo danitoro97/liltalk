@@ -15,7 +15,7 @@ class UsersController extends ActiveController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['view'], $actions['index'], $actions['delete'], $actions['update']);
+        unset($actions['view'],$actions['create'], $actions['index'], $actions['delete'], $actions['update']);
         return $actions;
     }
 
