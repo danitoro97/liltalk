@@ -20,6 +20,26 @@ class UsersController extends ActiveController
     }
 
     /**
+     * Añade una fila a la table usuarios o devuelve un null como error
+     * @return [type] [description]
+     */
+    public function actionCreate()
+    {
+        $model = new Usuarios();
+        $model->scenario = Usuarios::ESCENARIO_CREAR;
+        $model->nombre = $_POST['nombre'];
+        $model->email = $_POST['email'];
+        $model->password = $_POST['password'];
+
+        if ($model->save()) {
+            $model->refresh();
+            return $model;
+        }
+
+        return null;
+    }
+
+    /**
      * Comprueba la disponibilidad de un nombre de usuario
      * @param  [type] $nombre [description]
      * @return boolean         true si esta disponible false si no
