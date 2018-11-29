@@ -38,7 +38,7 @@ class UsersController extends ActiveController
             return $model;
         }
 
-        return null;
+        return $model->errors;
     }
 
     /**
