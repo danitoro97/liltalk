@@ -62,7 +62,7 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
             'nombre',
             'email',
             'url',
-            'token_val',
+            'auth_key',
         ];
     }
 
@@ -72,9 +72,9 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     public function rules()
     {
         return [
-            [['nombre', 'email','biografia','zona_horaria'], 'required'],
+            [['nombre', 'email'], 'required'],
             [['password_repeat', 'password'], 'required', 'on' => self::ESCENARIO_CREAR],
-             [['password_repeat'], 'compare', 'compareAttribute' => 'password', 'on' => [self::ESCENARIO_CREAR, self::ESCENARIO_ACTUALIZAR]],
+            [['password_repeat'], 'compare', 'compareAttribute' => 'password', 'on' => [self::ESCENARIO_CREAR, self::ESCENARIO_ACTUALIZAR]],
             [['nombre', 'password', 'email', 'auth_key'], 'string', 'max' => 255],
             [['biografia','url'],'safe'],
             [['auth_key'], 'unique'],
@@ -173,9 +173,9 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
                     $key = Yii::$app->security->generateRandomString();
                 }
                 $this->token_val = $key;
-                if ($this->scenario == self::ESCENARIO_CREAR) {
+                //if ($this->scenario == self::ESCENARIO_CREAR) {
                     $this->password = Yii::$app->security->generatePasswordHash($this->password);
-                }
+                //}
             } else {
                 //Actualizar
                 if ($this->scenario == self::ESCENARIO_ACTUALIZAR) {

@@ -11,17 +11,17 @@ CREATE TABLE usuarios
     nombre varchar(255) not null unique,
     password varchar(255) not null,
     email varchar(255) not null unique,
-    auth_key varchar(255) unique,
+    auth_key varchar(255) not null unique,
     token_val varchar(255) unique,
     biografia text,
     zona_horaria varchar(255) default 'Europe/Madrid',
     url varchar(255)
 );
 
-INSERT INTO usuarios (nombre,password,email)
-VALUES ('toro', crypt('toro',gen_salt('bf','13')),'danitoni2008@gmail.com'),
-       ('juan', crypt('juan',gen_salt('bf','13')),'danitoni2007@gmail.com'),
-       ('javi', crypt('javi',gen_salt('bf','13')),'danitoni2009@gmail.com');
+INSERT INTO usuarios (nombre,password,email,auth_key)
+VALUES ('toro', crypt('toro',gen_salt('bf','13')),'danitoni2008@gmail.com','aa'),
+       ('juan', crypt('juan',gen_salt('bf','13')),'danitoni2007@gmail.com','bb'),
+       ('javi', crypt('javi',gen_salt('bf','13')),'danitoni2009@gmail.com','cc');
 
 
 ---- Tabla Categorias ---

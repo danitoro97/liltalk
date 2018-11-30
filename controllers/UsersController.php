@@ -15,7 +15,7 @@ class UsersController extends ActiveController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['view'],$actions['create'], $actions['index'], $actions['delete'], $actions['update']);
+        unset($actions['view'], $actions['create'], $actions['index'], $actions['delete'], $actions['update']);
         return $actions;
     }
 
@@ -31,12 +31,11 @@ class UsersController extends ActiveController
         $model->email = $_POST['email'];
         $model->password = $_POST['password'];
         $model->password_repeat = $_POST['password'];
-        $model->zona_horaria = 'Europe/Madrid';
-        $model->biografia = 'aa';
+        /*$model->zona_horaria = 'Europe/Madrid';
+        $model->biografia = 'aa';*/
 
         if ($model->save()) {
-            $model->refresh();
-            return $model;
+            return $model->enviarCorreo();
         }
 
         return $model->errors;
@@ -75,6 +74,9 @@ class UsersController extends ActiveController
 
             $usuario = Usuarios::findOne(['nombre' => $nombre]);
             if ($usuario != null) {
+                if ($usuario->token_val != null) {
+                    return 'El usuario no esta validado , compruebe su correo';
+                }
                 return (Yii::$app->getSecurity()->validatePassword($password, $usuario->password)) ? $usuario: false;
             }
         }

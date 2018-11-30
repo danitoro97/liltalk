@@ -32,6 +32,15 @@ class LoginForm extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            ['username', function ($attribute, $params, $validator) {
+                $usuario = Usuarios::findOne(['nombre' => $this->$attribute]);
+                if ($usuario !== null) {
+                    if ($usuario->token_val !== null) {
+                        Yii::$app->session->setFlash('error', 'El usuario no está validado, revise su correo');
+                        $this->addError($attribute);
+                    }
+                }
+            }, 'skipOnEmpty' => false],
         ];
     }
 
