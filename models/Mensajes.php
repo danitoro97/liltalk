@@ -29,6 +29,23 @@ class Mensajes extends \yii\db\ActiveRecord
         return 'mensajes';
     }
 
+    public function fields()
+    {
+        return [
+            'id',
+            'sala' => function ($model) {
+                return $model->sala;
+            },
+            'usuario' => function ($model) {
+                return $model->usuario;
+            },
+            'created_at',
+            'color' => function ($model) {
+                return $model->participante->color;
+            }
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
