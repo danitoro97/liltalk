@@ -33,6 +33,7 @@ class Mensajes extends \yii\db\ActiveRecord
     {
         return [
             'id',
+            'mensaje',
             'sala' => function ($model) {
                 return $model->sala;
             },
