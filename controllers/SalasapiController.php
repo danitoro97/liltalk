@@ -24,8 +24,8 @@ class SalasapiController extends ActiveController
 
     public function actionNuevosmensajes($id, $sala_id)
     {
-
-        if (Participantes::find()->where(['usuario_id' =>$_POST['usuario_id']])
+        $usuario_id = Usuarios::findOne(['auth_key' => $_POST['auth_key']])->id;
+        if (Participantes::find()->where(['usuario_id' =>$usuario_id])
         ->andWhere(['sala_id'=> $sala_id])->exists()) {
             return Mensajes::find()
             ->where(['>','id', $id])
@@ -37,12 +37,12 @@ class SalasapiController extends ActiveController
 
     public function actionEnviarmensaje($sala_id)
     {
-
-        if (Participantes::find()->where(['usuario_id' =>$_POST['usuario_id']])
+        $usuario_id = Usuarios::findOne(['auth_key' => $_POST['auth_key']])->id;
+        if (Participantes::find()->where(['usuario_id' =>$usuario_id])
         ->andWhere(['sala_id'=> $sala_id])->exists()) {
             $model = new Mensajes(
                 [
-                  'usuario_id' => $_POST['usuario_id'],
+                  'usuario_id' => $usuario_id,
                   'sala_id' => $sala_id,
                   'mensaje' => $_POST['mensaje'],
                 ]
