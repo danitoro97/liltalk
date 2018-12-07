@@ -7,6 +7,7 @@ use Yii;
 use app\models\Usuarios;
 use app\models\Participantes;
 use app\models\Salas;
+use app\models\Mensajes;
 
 use yii\rest\ActiveController;
 
@@ -19,6 +20,38 @@ class SalasapiController extends ActiveController
         $actions = parent::actions();
         unset($actions['view'], $actions['index'], $actions['delete'], $actions['update']);
         return $actions;
+    }
+
+    public function actionNuevosmensajes($id, $sala_id)
+    {
+
+        if (Participantes::find()->where(['usuario_id' =>$_POST['usuario_id']])
+        ->andWhere(['sala_id'=> $sala_id])->exists()) {
+            return Mensajes::find()
+            ->where(['>','id', $id])
+            ->andWhere(['sala_id' => $sala_id])
+            ->andWhere(['!=','usuario_id', $usuario_id])
+            ->all();
+        }
+    }
+
+    public function actionEnviarmensaje($sala_id)
+    {
+
+        if (Participantes::find()->where(['usuario_id' =>$_POST['usuario_id']])
+        ->andWhere(['sala_id'=> $sala_id])->exists()) {
+            $model = new Mensajes(
+                [
+                  'usuario_id' => $_POST['usuario_id'],
+                  'sala_id' => $sala_id,
+                  'mensaje' => $_POST['mensaje'],
+                ]
+            );
+            if ($model->save()) {
+                $model->refresh();
+                return $model;
+            }
+        }
     }
 
 
