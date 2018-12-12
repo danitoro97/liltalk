@@ -23,6 +23,15 @@ class SalasDisponibles extends \yii\db\ActiveRecord
         return 'salas_disponibles';
     }
 
+    public function fields()
+    {
+        return [
+            'id',
+            'nombre',
+            'descripcion'
+        ];
+    }
+
     public static function primaryKey()
     {
         return ['id'];
